@@ -4,6 +4,9 @@ A working, demo-ready LMS for Shaha Finlease's **recovery** business: purchased 
 portfolios (personal loans and credit cards) are uploaded, allocated to callers across the
 **Jogeshwari, Dadar and Bangalore** offices, and worked through calls, promises to pay (PTP) and payments.
 
+**Live demo:** https://shaha-finlease-lms.netlify.app  (first visit after idle takes ~1 minute to wake) ·
+**Code:** https://github.com/aaradhya1205/shaha-lms
+
 > Ships with dummy seed data. Python 3.11+ · FastAPI · SQLAlchemy 2 · SQLite (PostgreSQL-ready) · server-rendered Jinja pages.
 
 ---
