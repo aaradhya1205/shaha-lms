@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% set is_caller = user.role == 'caller' %}
+{% block title %}{{ 'My Queue' if is_caller else 'Accounts' }}{% endblock %}
+{% macro search_icon() %}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>{% endmacro %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{{ 'My work queue' if is_caller else 'Accounts' }}</h1>
+    <p>{% if is_caller %}Today's promises and follow-ups first, then overdue, then new accounts — highest balance first within each group.
+       {% elif user.role == 'manager' %}Accounts of your team's callers, plus unallocated accounts in {{ user.office.name }}.
+       {% elif user.role == 'customer_service' %}All accounts of the {{ user.office.name }} office.
+       {% else %}Every account across Jogeshwari, Dadar and Bangalore.{% endif %}</p>
+  </div>
+  {% if is_caller %}<a class="btn primary" href="/queue/next">▶ Start calling <kbd>N</kbd></a>{% endif %}
+</div>
+
+{% if counts %}
+<div class="kpis">
+  <a class="kpi accent-brand {{ 'active' if filters.view == 'due' }}" href="/accounts?view=due"><div class="label">Due today</div><div class="value">{{ counts.due | num }}</div><div class="sub">{{ counts.ptp_today }} promise{{ '' if counts.ptp_today == 1 else 's' }} due</div></a>
+  <a class="kpi accent-bad {{ 'active' if filters.view == 'overdue' }}" href="/accounts?view=overdue"><div class="label">Overdue follow-ups</div><div class="value">{{ counts.overdue | num }}</div><div class="sub">missed earlier dates</div></a>
+  <a class="kpi {{ 'active' if filters.view == 'new' }}" href="/accounts?view=new"><div class="label">Never called</div><div class="value">{{ counts.new | num }}</div><div class="sub">fresh allocations</div></a>
+  <a class="kpi {{ 'active' if not filters.view }}" href="/accounts"><div class="label">Open accounts</div><div class="value">{{ counts.open | num }}</div><div class="sub">in your book</div></a>
+  <div class="kpi accent-good"><div class="label">Worked today</div><div class="value">{{ counts.worked_today | num }}</div><div class="sub">accounts called</div></div>
+</div>
+{% endif %}
+
+<div class="card">
+  <form class="filters" method="get" action="/accounts" id="filter-form">
+    {% if filters.view %}<input type="hidden" name="view" value="{{ filters.view }}">{% endif %}
+    <div class="search">{{ search_icon() }}<input type="search" name="q" value="{{ filters.q }}" placeholder="Search name, mobile or loan number  ( / )" id="q" autocomplete="off"></div>
+    <select name="status" data-autosubmit>
+      <option value="">All open statuses</option>
+      {% for s in statuses %}<option value="{{ s }}" {{ 'selected' if filters.status == s }}>{{ s }}</option>{% endfor %}
+    </select>
+    {% if user.role in ('head', 'coo') %}
+    <select name="office" data-autosubmit>
+      <option value="">All offices</option>
+      {% for o in offices %}<option value="{{ o.id }}" {{ 'selected' if filters.office_id == o.id }}>{{ o.name }}</option>{% endfor %}
+    </select>
+    {% endif %}
+    <select name="product" data-autosubmit>
+      <option value="">All products</option>
+      {% for p in products %}<option {{ 'selected' if filters.product == p }}>{{ p }}</option>{% endfor %}
+    </select>
+    <select name="portfolio" data-autosubmit>
+      <option value="">All portfolios</option>
+      {% for p in portfolios %}<option {{ 'selected' if filters.portfolio == p }}>{{ p }}</option>{% endfor %}
+    </select>
+    {% if not is_caller and user.role != 'customer_service' %}
+    <select name="owner" data-autosubmit>
+      <option value="">Any caller</option>
+      <option value="none" {{ 'selected' if filters.unallocated }}>— Unallocated —</option>
+      {% for c in callers %}<option value="{{ c.id }}" {{ 'selected' if filters.owner_id == c.id }}>{{ c.name }} ({{ c.code }})</option>{% endfor %}
+    </select>
+    {% endif %}
+    <select name="sort" data-autosubmit>
+      {% for k, label in sorts.items() %}<option value="{{ k }}" {{ 'selected' if filters.sort == k }}>Sort: {{ label }}</option>{% endfor %}
+    </select>
+    <label class="check"><input type="checkbox" name="closed" value="1" data-autosubmit {{ 'checked' if filters.include_closed }}> Include closed</label>
+    <button class="btn primary" type="submit">Search</button>
+    {% if request.query_params %}<a class="btn ghost" href="/accounts">Clear</a>{% endif %}
+  </form>
+
+  {% if rows %}
+  <div class="table-wrap">
+  <table>
+    <thead><tr>
+      <th>Priority</th><th>Customer</th><th>Loan</th><th>Mobile</th>
+      <th class="num">Balance due</th><th>Status</th><th>Next action</th><th>Last call</th>
+      {% if not is_caller %}<th>Caller</th>{% endif %}
+    </tr></thead>
+    <tbody>
+    {% for a in rows %}
+      {% set b = buckets.get(a.id, 4) %}
+      <tr class="clickable" data-href="/accounts/{{ a.id }}">
+        <td><span class="badge plain b-{{ b }}">{{ bucket_labels[b] }}</span></td>
+        <td><a class="cust-name" href="/accounts/{{ a.id }}">{{ a.customer_name }}</a><span class="sub">{{ a.city or '' }} · {{ a.language or '' }}</span></td>
+        <td><span class="mono">{{ a.loan_no }}</span><span class="sub">{{ a.product }} · {{ a.portfolio }}</span></td>
+        <td class="mono">{{ a.mobile }}</td>
+        <td class="num"><b>{{ a.balance | inr }}</b>{% if a.total_paid %}<span class="sub">paid {{ a.total_paid | inr }}</span>{% endif %}</td>
+        <td><span class="badge s-{{ a.status }}">{{ a.status }}</span></td>
+        <td class="nowrap">
+          {% if a.ptp_date %}<b style="color:var(--violet)">PTP {{ a.ptp_amount | inr }}</b><span class="sub">{{ a.ptp_date | rel }}</span>
+          {% elif a.next_followup_date %}Follow-up<span class="sub">{{ a.next_followup_date | rel }}</span>
+          {% elif a.is_terminal %}<span class="faint">—</span>
+          {% else %}<span class="faint">First call</span>{% endif %}
+        </td>
+        <td class="nowrap">{% if a.last_disposition %}{{ dispositions[a.last_disposition].label if a.last_disposition in dispositions else a.last_disposition }}<span class="sub">{{ a.last_call_at | dt }}</span>{% else %}<span class="faint">Never</span>{% endif %}</td>
+        {% if not is_caller %}<td class="nowrap">{% if a.owner %}{{ a.owner.name }}<span class="sub">{{ a.owner.code }}</span>{% else %}<span class="tag">Unallocated</span>{% endif %}</td>{% endif %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <div class="pager">
+    <span>Showing {{ (filters.page - 1) * page_size + 1 }}–{{ (filters.page - 1) * page_size + rows|length }} of <b>{{ total | num }}</b> accounts</span>
+    <div class="row">
+      {% if filters.page > 1 %}<a class="btn sm" href="?{{ qs_page }}&page={{ filters.page - 1 }}">← Prev</a>{% endif %}
+      <span>Page {{ filters.page }} of {{ pages | num }}</span>
+      {% if filters.page < pages %}<a class="btn sm" href="?{{ qs_page }}&page={{ filters.page + 1 }}">Next →</a>{% endif %}
+    </div>
+  </div>
+  {% else %}
+  <div class="empty"><b>No accounts found</b>{% if filters.q %}Nothing matches “{{ filters.q }}”. Try part of the name, the last digits of the mobile, or the loan number.{% elif is_caller %}No accounts are allocated to you yet — ask your manager.{% else %}Try clearing the filters.{% endif %}</div>
+  {% endif %}
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input, textarea, select')) return;
+  if (e.key === '/') { e.preventDefault(); document.getElementById('q').focus(); }
+  {% if is_caller %}if (e.key === 'n' || e.key === 'N') location.href = '/queue/next';{% endif %}
+});
+</script>
+{% endblock %}

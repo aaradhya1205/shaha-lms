@@ -1,0 +1,257 @@
+loan_no,portfolio,seller_bank,customer_name,mobile,email,city,state,office,language,product,original_amount,outstanding,npa_date,last_payment_date,status
+LNX0000001,PF-D,Bank Delta,Imran Patil,7040260662,imran.patil1@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,458900,355780,2019-08-26,2019-02-18,New
+LNX0000002,PF-A,Bank Alpha,Anita Naik,6619659571,anita.naik2@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,68400,93120,2020-05-22,2020-01-26,New
+LNX0000003,PF-B,Bank Beta,Priya Desai,7110655224,priya.desai3@example.com,Pune,Maharashtra,Dadar,Marathi,Credit Card,257200,266280,2020-04-27,2019-12-11,New
+LNX0000004,PF-C,Bank Gamma,Sneha Desai,9834543046,sneha.desai4@example.com,Nashik,Maharashtra,Dadar,Marathi,Credit Card,482300,360600,2021-04-23,2020-10-18,New
+LNX0000005,PF-C,Bank Gamma,Pooja Iyer,9939671729,pooja.iyer5@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,219900,168320,2022-05-14,2021-11-01,New
+LNX0000006,PF-C,Bank Gamma,Asha Naik,9452795162,asha.naik6@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,362500,301580,2022-11-02,2022-07-27,New
+LNX0000007,PF-E,Bank Epsilon,Mahesh Kulkarni,6289845088,mahesh.kulkarni7@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,306800,360640,2024-02-12,2023-11-27,New
+LNX0000008,PF-A,Bank Alpha,Shalini Shaikh,6495741540,shalini.shaikh8@example.com,Pune,Maharashtra,Dadar,Marathi,Credit Card,385000,357150,2023-04-30,2022-12-03,New
+LNX0000009,PF-D,Bank Delta,Priya Reddy,9086523513,priya.reddy9@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,125900,162490,2023-06-18,2023-01-09,New
+LNX0000010,PF-E,Bank Epsilon,Rakesh Tiwari,9247767551,rakesh.tiwari10@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,470700,434330,2023-08-29,2023-03-31,New
+LNX0000011,PF-B,Bank Beta,Anita Jadhav,8004395478,anita.jadhav11@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,417200,569420,2021-01-16,2020-09-11,New
+LNX0000012,PF-E,Bank Epsilon,Mahesh Kulkarni,9427424008,mahesh.kulkarni12@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,442200,645690,2019-08-10,2019-02-15,New
+LNX0000013,PF-D,Bank Delta,Imran Rao,6365129829,imran.rao13@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,75100,111720,2023-12-10,2023-08-31,New
+LNX0000014,PF-A,Bank Alpha,Mahesh Tiwari,9159504871,mahesh.tiwari14@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,317800,378490,2019-10-16,2019-06-25,New
+LNX0000015,PF-E,Bank Epsilon,Kavita Gowda,9334848879,kavita.gowda15@example.com,Nagpur,Maharashtra,Dadar,Marathi,Personal Loan,419800,627380,2024-03-23,2023-09-23,New
+LNX0000016,PF-C,Bank Gamma,Shalini Gupta,8157413274,shalini.gupta16@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,152200,169400,2021-04-20,2020-10-07,New
+LNX0000017,PF-E,Bank Epsilon,Pooja Pawar,7571866729,pooja.pawar17@example.com,Pune,Maharashtra,Dadar,Marathi,Credit Card,233900,260730,2020-11-15,2020-06-17,New
+LNX0000018,PF-C,Bank Gamma,Imran Iyer,7555810350,imran.iyer18@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Credit Card,179800,241800,2023-06-30,2023-03-04,New
+LNX0000019,PF-A,Bank Alpha,Deepak Gupta,8391524801,deepak.gupta19@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,178600,223960,2022-11-11,2022-05-21,New
+LNX0000020,PF-B,Bank Beta,Lakshmi Reddy,8858610934,lakshmi.reddy20@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,415300,498040,2019-01-08,2018-07-10,New
+LNX0000021,PF-D,Bank Delta,Deepak Reddy,9497314843,deepak.reddy21@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,166200,174030,2022-09-23,2022-07-03,New
+LNX0000022,PF-B,Bank Beta,Meena Tiwari,8167409691,meena.tiwari22@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,401200,539690,2020-08-21,2020-02-22,New
+LNX0000023,PF-A,Bank Alpha,Rahul Pawar,6270405570,rahul.pawar23@example.com,Nashik,Maharashtra,Dadar,Marathi,Personal Loan,134000,140300,2021-03-08,2020-11-14,New
+LNX0000024,PF-E,Bank Epsilon,Manoj Gupta,9888134464,manoj.gupta24@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,127300,95310,2022-12-20,2022-06-26,New
+LNX0000025,PF-B,Bank Beta,Divya Tiwari,7185055879,divya.tiwari25@example.com,Kochi,Kerala,Bangalore,English,Personal Loan,35300,49350,2021-01-20,2020-11-20,New
+LNX0000026,PF-E,Bank Epsilon,Priya Kulkarni,7205413398,priya.kulkarni26@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,454700,520330,2020-03-10,2019-12-27,New
+LNX0000027,PF-E,Bank Epsilon,Ganesh Desai,7743814251,ganesh.desai27@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,71900,75820,2024-09-01,2024-02-23,New
+LNX0000028,PF-E,Bank Epsilon,Anita Hegde,7447360632,anita.hegde28@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,232600,334530,2021-04-09,2020-10-17,New
+LNX0000029,PF-C,Bank Gamma,Amit Jadhav,7768927867,amit.jadhav29@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,79900,69520,2022-05-25,2022-02-23,New
+LNX0000030,PF-B,Bank Beta,Rakesh Tiwari,9174799977,rakesh.tiwari30@example.com,Nagpur,Maharashtra,Dadar,Marathi,Credit Card,199800,259200,2020-01-21,2019-08-13,New
+LNX0000031,PF-B,Bank Beta,Ravi Nair,8098992583,ravi.nair31@example.com,Mysuru,Karnataka,Bangalore,Kannada,Credit Card,350800,340720,2021-03-12,2020-10-12,New
+LNX0000032,PF-C,Bank Gamma,Divya Pillai,6121171715,divya.pillai32@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,34800,35060,2024-10-20,2024-06-07,New
+LNX0000033,PF-A,Bank Alpha,Amit Gupta,8435883162,amit.gupta33@example.com,Mysuru,Karnataka,Bangalore,Kannada,Personal Loan,168700,154580,2020-06-14,2019-12-29,New
+LNX0000034,PF-C,Bank Gamma,Amit Gupta,6681224235,amit.gupta34@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,170100,176940,2019-10-24,2019-06-18,New
+LNX0000035,PF-A,Bank Alpha,Asha Iyer,8667549003,asha.iyer35@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,119600,127130,2022-10-21,2022-05-08,New
+LNX0000036,PF-A,Bank Alpha,Meena Gupta,7311343078,meena.gupta36@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,185200,267760,2022-06-03,2021-11-20,New
+LNX0000037,PF-C,Bank Gamma,Kavita Sharma,9263796374,kavita.sharma37@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,50200,35750,2024-09-02,2024-05-17,New
+LNX0000038,PF-D,Bank Delta,Fatima Gowda,7367976293,fatima.gowda38@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Personal Loan,342000,504870,2022-06-14,2022-02-19,New
+LNX0000039,PF-D,Bank Delta,Kavita Patil,7059486466,kavita.patil39@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,31600,23900,2021-11-12,2021-05-26,New
+LNX0000040,PF-E,Bank Epsilon,Fatima Shaikh,8478700535,fatima.shaikh40@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,260000,191400,2021-01-29,2020-10-21,New
+LNX0000041,PF-C,Bank Gamma,Divya Kulkarni,8409768451,divya.kulkarni41@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,273500,239110,2021-01-19,2020-11-20,New
+LNX0000042,PF-E,Bank Epsilon,Imran Reddy,9630072489,imran.reddy42@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,24000,18540,2020-01-03,2019-09-29,New
+LNX0000043,PF-C,Bank Gamma,Pooja Pawar,8773821322,pooja.pawar43@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,499700,732610,2020-09-27,2020-04-21,New
+LNX0000044,PF-C,Bank Gamma,Shalini Yadav,7976984424,shalini.yadav44@example.com,Mysuru,Karnataka,Bangalore,Kannada,Credit Card,55800,75880,2024-10-02,2024-04-16,New
+LNX0000045,PF-E,Bank Epsilon,Swati Sharma,6044949090,swati.sharma45@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Credit Card,498400,667040,2021-07-30,2021-05-10,New
+LNX0000046,PF-A,Bank Alpha,Sanjay Pillai,8003558733,sanjay.pillai46@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,35400,42510,2021-09-28,2021-03-27,New
+LNX0000047,PF-E,Bank Epsilon,Rekha Desai,6908529068,rekha.desai47@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,450800,339380,2024-04-24,2023-12-22,New
+LNX0000048,PF-B,Bank Beta,Shalini Pawar,8823527883,shalini.pawar48@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,424600,584430,2019-11-11,2019-05-13,New
+LNX0000049,PF-A,Bank Alpha,Asha Tiwari,9065134264,asha.tiwari49@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,269300,322330,2020-06-30,2020-04-28,New
+LNX0000050,PF-B,Bank Beta,Fatima Gowda,6959563263,fatima.gowda50@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,443100,411380,2024-03-23,2023-09-26,New
+LNX0000051,PF-A,Bank Alpha,Venkatesh Gowda,8415375252,venkatesh.gowda51@example.com,Nagpur,Maharashtra,Dadar,Marathi,Personal Loan,395900,301340,2024-09-06,2024-03-15,New
+LNX0000052,PF-A,Bank Alpha,Mahesh Naik,8952260998,mahesh.naik52@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,449300,408610,2023-01-12,2022-10-11,New
+LNX0000053,PF-B,Bank Beta,Lakshmi Gowda,9324217457,lakshmi.gowda53@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,150300,105640,2024-07-06,2024-01-13,New
+LNX0000054,PF-C,Bank Gamma,Sanjay Kulkarni,6994713200,sanjay.kulkarni54@example.com,Surat,Gujarat,Dadar,Hindi,Personal Loan,291400,204380,2022-10-17,2022-05-09,New
+LNX0000055,PF-C,Bank Gamma,Rakesh Joshi,9811379878,rakesh.joshi55@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,339600,509070,2019-11-09,2019-06-10,New
+LNX0000056,PF-C,Bank Gamma,Sneha Patil,8468409933,sneha.patil56@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,253900,306700,2020-09-01,2020-05-01,New
+LNX0000057,PF-C,Bank Gamma,Deepak Nair,6786357475,deepak.nair57@example.com,Nashik,Maharashtra,Dadar,Marathi,Credit Card,347700,497460,2021-04-13,2021-01-23,New
+LNX0000058,PF-C,Bank Gamma,Lakshmi Patil,8302522508,lakshmi.patil58@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,470600,377350,2024-04-18,2023-11-04,New
+LNX0000059,PF-D,Bank Delta,Imran Iyer,7080713812,imran.iyer59@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,476500,588520,2020-05-05,2020-01-24,New
+LNX0000060,PF-E,Bank Epsilon,Anita Pillai,6187577427,anita.pillai60@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,388600,404890,2021-02-27,2020-10-28,New
+LNX0000061,PF-C,Bank Gamma,Anita Joshi,9444404100,anita.joshi61@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,486600,419300,2019-03-24,2018-10-10,New
+LNX0000062,PF-D,Bank Delta,Rakesh Kulkarni,7099426515,rakesh.kulkarni62@example.com,Nashik,Maharashtra,Dadar,Marathi,Credit Card,428000,394620,2023-01-15,2022-10-15,New
+LNX0000063,PF-D,Bank Delta,Sanjay Pawar,6456554890,sanjay.pawar63@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,275600,380030,2019-03-31,2018-12-29,New
+LNX0000064,PF-E,Bank Epsilon,Lakshmi Sharma,6240303866,lakshmi.sharma64@example.com,Surat,Gujarat,Dadar,Hindi,Personal Loan,452400,626280,2024-01-13,2023-09-12,New
+LNX0000065,PF-D,Bank Delta,Amit Desai,8137403356,amit.desai65@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,21100,27970,2021-08-10,2021-06-02,New
+LNX0000066,PF-D,Bank Delta,Ravi More,8240070455,ravi.more66@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Personal Loan,266000,297800,2021-02-24,2020-09-18,New
+LNX0000067,PF-A,Bank Alpha,Divya Shaikh,7587339177,divya.shaikh67@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Credit Card,248200,364140,2021-09-19,2021-03-22,New
+LNX0000068,PF-C,Bank Gamma,Priya Sharma,8243509688,priya.sharma68@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,364000,278410,2021-07-22,2021-02-04,New
+LNX0000069,PF-D,Bank Delta,Kavita Jadhav,7532249109,kavita.jadhav69@example.com,Nagpur,Maharashtra,Dadar,Marathi,Personal Loan,25500,34110,2024-08-29,2024-06-13,New
+LNX0000070,PF-B,Bank Beta,Anita Pillai,7520821409,anita.pillai70@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Personal Loan,261600,205930,2024-07-23,2024-04-07,New
+LNX0000071,PF-E,Bank Epsilon,Vijay Rao,6762204860,vijay.rao71@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,39300,58130,2020-08-04,2020-02-20,New
+LNX0000072,PF-D,Bank Delta,Rekha Kulkarni,7700582441,rekha.kulkarni72@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,85000,122840,2022-09-10,2022-05-25,New
+LNX0000073,PF-A,Bank Alpha,Pooja Jadhav,6003082418,pooja.jadhav73@example.com,Hyderabad,Telangana,Bangalore,Telugu,Credit Card,326200,485380,2023-12-18,2023-09-06,New
+LNX0000074,PF-C,Bank Gamma,Neha More,6052889659,neha.more74@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,189900,190670,2022-06-18,2021-12-30,New
+LNX0000075,PF-C,Bank Gamma,Divya Pillai,9266301978,divya.pillai75@example.com,Nashik,Maharashtra,Dadar,Marathi,Personal Loan,318300,410560,2024-04-27,2024-02-20,New
+LNX0000076,PF-A,Bank Alpha,Sanjay Patil,8292395645,sanjay.patil76@example.com,Hyderabad,Telangana,Bangalore,Telugu,Personal Loan,70700,64020,2019-09-15,2019-04-22,New
+LNX0000077,PF-C,Bank Gamma,Shalini Kulkarni,7115171016,shalini.kulkarni77@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,263600,185310,2019-09-25,2019-07-21,New
+LNX0000078,PF-D,Bank Delta,Deepak Gupta,6861751170,deepak.gupta78@example.com,Surat,Gujarat,Dadar,Hindi,Credit Card,424200,341970,2024-07-26,2024-04-11,New
+LNX0000079,PF-B,Bank Beta,Asha Iyer,7420569001,asha.iyer79@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Personal Loan,281700,301030,2019-11-20,2019-05-13,New
+LNX0000080,PF-D,Bank Delta,Amit Pawar,6077486627,amit.pawar80@example.com,Mysuru,Karnataka,Bangalore,Kannada,Personal Loan,472600,536720,2020-10-20,2020-05-04,New
+LNX0000081,PF-B,Bank Beta,Sneha Nair,9666050263,sneha.nair81@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,386100,323760,2020-06-28,2020-01-14,New
+LNX0000082,PF-E,Bank Epsilon,Nitin Jadhav,8792493869,nitin.jadhav82@example.com,Mysuru,Karnataka,Bangalore,Kannada,Credit Card,260700,243760,2022-01-01,2021-07-30,New
+LNX0000083,PF-B,Bank Beta,Meena Iyer,6425276493,meena.iyer83@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,250400,352390,2021-02-10,2020-09-20,New
+LNX0000084,PF-E,Bank Epsilon,Arjun Iyer,6509772630,arjun.iyer84@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,102300,125070,2019-06-01,2019-03-07,New
+LNX0000085,PF-D,Bank Delta,Venkatesh Joshi,7998766456,venkatesh.joshi85@example.com,Mysuru,Karnataka,Bangalore,Kannada,Personal Loan,260500,230880,2019-07-26,2019-04-09,New
+LNX0000086,PF-D,Bank Delta,Asha Gupta,6395897797,asha.gupta86@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,25100,19690,2022-12-03,2022-08-10,New
+LNX0000087,PF-B,Bank Beta,Rakesh Patil,8198798035,rakesh.patil87@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,186600,252240,2022-09-02,2022-03-22,New
+LNX0000088,PF-B,Bank Beta,Priya Gowda,7686316388,priya.gowda88@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,71800,73700,2023-06-08,2022-11-20,New
+LNX0000089,PF-D,Bank Delta,Ravi Gupta,8800300113,ravi.gupta89@example.com,Nashik,Maharashtra,Dadar,Marathi,Personal Loan,252000,311030,2023-09-08,2023-06-27,New
+LNX0000090,PF-D,Bank Delta,Neha Sharma,7006309950,neha.sharma90@example.com,Nagpur,Maharashtra,Dadar,Marathi,Credit Card,318000,386550,2023-05-20,2022-12-08,New
+LNX0000091,PF-D,Bank Delta,Sneha Naik,6055507515,sneha.naik91@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,318700,340600,2020-10-27,2020-07-26,New
+LNX0000092,PF-A,Bank Alpha,Mahesh Yadav,7559590087,mahesh.yadav92@example.com,Surat,Gujarat,Dadar,Hindi,Credit Card,433200,362730,2022-11-26,2022-07-17,New
+LNX0000093,PF-A,Bank Alpha,Sanjay Gowda,8057310482,sanjay.gowda93@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,181600,170930,2019-06-28,2018-12-27,New
+LNX0000094,PF-A,Bank Alpha,Rekha Yadav,7890333519,rekha.yadav94@example.com,Surat,Gujarat,Dadar,Hindi,Credit Card,151200,183290,2021-06-28,2021-01-16,New
+LNX0000095,PF-B,Bank Beta,Priya Rao,7778336856,priya.rao95@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Credit Card,148100,149110,2020-05-19,2020-02-11,New
+LNX0000096,PF-A,Bank Alpha,Rekha Desai,9643729455,rekha.desai96@example.com,Mysuru,Karnataka,Bangalore,Kannada,Credit Card,51200,63190,2022-08-20,2022-05-22,New
+LNX0000097,PF-D,Bank Delta,Pooja Khan,9191946300,pooja.khan97@example.com,Nagpur,Maharashtra,Dadar,Marathi,Personal Loan,338800,415730,2024-01-05,2023-07-01,New
+LNX0000098,PF-D,Bank Delta,Anita Pillai,6072070263,anita.pillai98@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,395400,541390,2024-04-22,2023-11-12,New
+LNX0000099,PF-C,Bank Gamma,Amit Pillai,8834980388,amit.pillai99@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,53300,39040,2020-06-17,2020-03-28,New
+LNX0000100,PF-A,Bank Alpha,Kiran Hegde,7141323188,kiran.hegde100@example.com,Pune,Maharashtra,Dadar,Marathi,Credit Card,131500,94770,2019-09-29,2019-07-03,New
+LNX0000101,PF-C,Bank Gamma,Deepak Thakur,7347719486,deepak.thakur101@example.com,Hyderabad,Telangana,Bangalore,Telugu,Credit Card,201100,151310,2022-12-08,2022-08-06,New
+LNX0000102,PF-D,Bank Delta,Vijay Gupta,7342606877,vijay.gupta102@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Personal Loan,413300,358190,2021-12-12,2021-06-06,New
+LNX0000103,PF-B,Bank Beta,Sanjay Thakur,8123564808,sanjay.thakur103@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,247800,308190,2023-03-24,2022-12-11,New
+LNX0000104,PF-C,Bank Gamma,Nitin Pillai,9792338917,nitin.pillai104@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Credit Card,495100,619360,2020-03-04,2019-11-01,New
+LNX0000105,PF-D,Bank Delta,Kavita Khan,7660752422,kavita.khan105@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Personal Loan,291000,381700,2023-12-17,2023-08-21,New
+LNX0000106,PF-C,Bank Gamma,Swati Hegde,6237981466,swati.hegde106@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,499900,721230,2022-07-04,2022-05-05,New
+LNX0000107,PF-D,Bank Delta,Arjun Joshi,6002808366,arjun.joshi107@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,128100,139720,2019-07-06,2019-05-02,New
+LNX0000108,PF-A,Bank Alpha,Arjun Joshi,8669939261,arjun.joshi108@example.com,Nagpur,Maharashtra,Dadar,Marathi,Personal Loan,358500,418320,2020-07-01,2020-03-11,New
+LNX0000109,PF-B,Bank Beta,Rahul Iyer,9871417216,rahul.iyer109@example.com,Mysuru,Karnataka,Bangalore,Kannada,Credit Card,389300,302340,2020-08-15,2020-04-08,New
+LNX0000110,PF-A,Bank Alpha,Imran Desai,7177273873,imran.desai110@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,493800,520960,2024-10-21,2024-04-18,New
+LNX0000111,PF-A,Bank Alpha,Divya Sharma,7152757536,divya.sharma111@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Personal Loan,214600,177550,2020-03-05,2020-01-02,New
+LNX0000112,PF-E,Bank Epsilon,Meena Hegde,6402823628,meena.hegde112@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,265900,319280,2024-05-11,2023-10-27,New
+LNX0000113,PF-A,Bank Alpha,Shalini Pawar,6132356424,shalini.pawar113@example.com,Hyderabad,Telangana,Bangalore,Telugu,Personal Loan,205000,306940,2021-12-06,2021-08-09,New
+LNX0000114,PF-A,Bank Alpha,Rakesh Pawar,8689345666,rakesh.pawar114@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,377200,470960,2024-11-13,2024-07-09,New
+LNX0000115,PF-A,Bank Alpha,Rekha Hegde,8206090757,rekha.hegde115@example.com,Mysuru,Karnataka,Bangalore,Kannada,Personal Loan,233200,332020,2021-04-10,2020-12-31,New
+LNX0000116,PF-E,Bank Epsilon,Anita Rao,6469454965,anita.rao116@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Credit Card,459300,494020,2024-12-13,2024-10-13,New
+LNX0000117,PF-E,Bank Epsilon,Rekha Shaikh,7035340726,rekha.shaikh117@example.com,Mysuru,Karnataka,Bangalore,Kannada,Credit Card,340700,408190,2019-11-15,2019-08-04,New
+LNX0000118,PF-E,Bank Epsilon,Venkatesh Thakur,7743700661,venkatesh.thakur118@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,136100,171560,2019-05-07,2019-02-26,New
+LNX0000119,PF-A,Bank Alpha,Shalini Patil,9115014812,shalini.patil119@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,317700,273040,2024-12-26,2024-10-11,New
+LNX0000120,PF-A,Bank Alpha,Priya Patil,6142435866,priya.patil120@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,91600,124580,2022-03-23,2021-09-22,New
+LNX0000121,PF-C,Bank Gamma,Manoj Kulkarni,8977463841,manoj.kulkarni121@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,37100,36380,2022-03-03,2021-12-21,New
+LNX0000122,PF-C,Bank Gamma,Asha Sharma,9756622349,asha.sharma122@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,45500,47730,2020-02-07,2019-09-12,New
+LNX0000123,PF-A,Bank Alpha,Mahesh Shaikh,6373451350,mahesh.shaikh123@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,21000,23490,2022-03-27,2022-01-13,New
+LNX0000124,PF-B,Bank Beta,Lakshmi Khan,7751060018,lakshmi.khan124@example.com,Surat,Gujarat,Dadar,Hindi,Personal Loan,442000,401530,2020-10-12,2020-06-02,New
+LNX0000125,PF-A,Bank Alpha,Imran Naik,6430860990,imran.naik125@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,479700,637780,2022-08-30,2022-04-01,New
+LNX0000126,PF-D,Bank Delta,Rekha Pawar,7407275799,rekha.pawar126@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Personal Loan,188800,177940,2023-10-20,2023-04-04,New
+LNX0000127,PF-D,Bank Delta,Vijay Desai,7932005995,vijay.desai127@example.com,Mysuru,Karnataka,Bangalore,Kannada,Credit Card,47700,46680,2022-08-31,2022-02-19,New
+LNX0000128,PF-C,Bank Gamma,Meena Pillai,9690094865,meena.pillai128@example.com,Kochi,Kerala,Bangalore,English,Personal Loan,230700,268380,2020-05-31,2020-01-07,New
+LNX0000129,PF-E,Bank Epsilon,Suresh Gupta,8172791213,suresh.gupta129@example.com,Mysuru,Karnataka,Bangalore,Kannada,Personal Loan,146600,187450,2021-10-11,2021-05-21,New
+LNX0000130,PF-C,Bank Gamma,Shalini More,8787366929,shalini.more130@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,103200,88370,2020-09-10,2020-06-05,New
+LNX0000131,PF-B,Bank Beta,Sneha Pawar,6013547724,sneha.pawar131@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,250000,216280,2023-05-10,2022-11-13,New
+LNX0000132,PF-B,Bank Beta,Arjun Pawar,7974961751,arjun.pawar132@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,38100,30990,2023-07-16,2023-05-16,New
+LNX0000133,PF-E,Bank Epsilon,Shalini Pawar,6487374311,shalini.pawar133@example.com,Kochi,Kerala,Bangalore,English,Personal Loan,207200,255750,2021-07-25,2021-04-10,New
+LNX0000134,PF-A,Bank Alpha,Rekha Nair,9518341988,rekha.nair134@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,347700,441750,2020-10-02,2020-05-31,New
+LNX0000135,PF-D,Bank Delta,Arjun Jadhav,9893215140,arjun.jadhav135@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Credit Card,169900,240500,2022-09-05,2022-07-05,New
+LNX0000136,PF-A,Bank Alpha,Rakesh Desai,7770190817,rakesh.desai136@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,183600,204780,2020-02-19,2019-08-27,New
+LNX0000137,PF-C,Bank Gamma,Arjun Kulkarni,6782872121,arjun.kulkarni137@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,394300,342280,2021-01-22,2020-08-15,New
+LNX0000138,PF-A,Bank Alpha,Rakesh Gupta,8622958433,rakesh.gupta138@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Personal Loan,70300,49950,2023-09-11,2023-03-28,New
+LNX0000139,PF-C,Bank Gamma,Shalini Rao,7176666339,shalini.rao139@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,451700,667250,2023-05-25,2022-11-28,New
+LNX0000140,PF-B,Bank Beta,Lakshmi Pawar,9502619495,lakshmi.pawar140@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,205100,277230,2020-08-22,2020-03-25,New
+LNX0000141,PF-B,Bank Beta,Kiran Gowda,9728875941,kiran.gowda141@example.com,Kochi,Kerala,Bangalore,English,Personal Loan,208700,190730,2023-03-21,2022-11-17,New
+LNX0000142,PF-C,Bank Gamma,Kavita Iyer,8164017456,kavita.iyer142@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,282400,306010,2023-10-22,2023-08-02,New
+LNX0000143,PF-A,Bank Alpha,Amit Khan,6225216777,amit.khan143@example.com,Hyderabad,Telangana,Bangalore,Telugu,Credit Card,135000,151800,2022-11-14,2022-09-12,New
+LNX0000144,PF-C,Bank Gamma,Asha More,7223919098,asha.more144@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Credit Card,211300,179290,2024-01-26,2023-08-31,New
+LNX0000145,PF-B,Bank Beta,Asha Yadav,9743880508,asha.yadav145@example.com,Kochi,Kerala,Bangalore,English,Credit Card,94000,116060,2022-05-01,2022-01-11,New
+LNX0000146,PF-D,Bank Delta,Fatima More,9598292249,fatima.more146@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,236600,244930,2020-07-24,2020-01-25,New
+LNX0000147,PF-B,Bank Beta,Ravi Gowda,8502468662,ravi.gowda147@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,154800,175170,2019-01-28,2018-10-19,New
+LNX0000148,PF-C,Bank Gamma,Swati Pillai,8683035228,swati.pillai148@example.com,Surat,Gujarat,Dadar,Hindi,Personal Loan,363000,544480,2019-11-05,2019-07-22,New
+LNX0000149,PF-E,Bank Epsilon,Priya Jadhav,9520416409,priya.jadhav149@example.com,Pune,Maharashtra,Dadar,Marathi,Credit Card,290700,391530,2020-01-20,2019-07-14,New
+LNX0000150,PF-A,Bank Alpha,Suresh Nair,9835933768,suresh.nair150@example.com,Mysuru,Karnataka,Bangalore,Kannada,Credit Card,297300,230570,2023-02-08,2022-09-14,New
+LNX0000151,PF-C,Bank Gamma,Neha Kulkarni,8888772694,neha.kulkarni151@example.com,Nashik,Maharashtra,Dadar,Marathi,Personal Loan,473800,351640,2022-03-30,2021-11-16,New
+LNX0000152,PF-E,Bank Epsilon,Rakesh Hegde,7340477083,rakesh.hegde152@example.com,Nagpur,Maharashtra,Dadar,Marathi,Personal Loan,186700,228450,2020-04-28,2019-12-06,New
+LNX0000153,PF-E,Bank Epsilon,Imran Naik,6427866884,imran.naik153@example.com,Nashik,Maharashtra,Dadar,Marathi,Credit Card,52800,53800,2023-07-22,2023-01-04,New
+LNX0000154,PF-A,Bank Alpha,Suresh Gowda,6228171634,suresh.gowda154@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,69200,92120,2023-03-21,2022-12-14,New
+LNX0000155,PF-B,Bank Beta,Sneha Jadhav,8936219198,sneha.jadhav155@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,50200,52070,2020-02-17,2019-12-16,New
+LNX0000156,PF-E,Bank Epsilon,Ravi Gupta,9608095071,ravi.gupta156@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Credit Card,171300,177710,2022-07-28,2022-05-24,New
+LNX0000157,PF-D,Bank Delta,Mahesh Hegde,9072175684,mahesh.hegde157@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,117300,154720,2023-09-21,2023-04-11,New
+LNX0000158,PF-E,Bank Epsilon,Mahesh Jadhav,9227930606,mahesh.jadhav158@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,409400,538730,2020-02-22,2019-12-03,New
+LNX0000159,PF-D,Bank Delta,Rahul Sharma,6138478858,rahul.sharma159@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Credit Card,119600,178120,2019-12-28,2019-09-04,New
+LNX0000160,PF-E,Bank Epsilon,Anita Pillai,6314760227,anita.pillai160@example.com,Nagpur,Maharashtra,Dadar,Marathi,Credit Card,173500,249530,2023-02-07,2022-11-02,New
+LNX0000161,PF-D,Bank Delta,Fatima Gupta,6948470431,fatima.gupta161@example.com,Surat,Gujarat,Dadar,Hindi,Credit Card,63100,80370,2019-02-16,2018-12-03,New
+LNX0000162,PF-A,Bank Alpha,Sanjay Shaikh,8394670532,sanjay.shaikh162@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Personal Loan,155900,228570,2024-06-15,2024-04-01,New
+LNX0000163,PF-D,Bank Delta,Fatima Thakur,9414182467,fatima.thakur163@example.com,Hyderabad,Telangana,Bangalore,Telugu,Personal Loan,115600,114510,2020-11-02,2020-05-20,New
+LNX0000164,PF-C,Bank Gamma,Deepak Khan,7645466265,deepak.khan164@example.com,Hyderabad,Telangana,Bangalore,Telugu,Personal Loan,249200,186520,2022-09-22,2022-07-21,New
+LNX0000165,PF-D,Bank Delta,Rekha Iyer,8739329453,rekha.iyer165@example.com,Kochi,Kerala,Bangalore,English,Personal Loan,328100,387620,2021-08-17,2021-02-23,New
+LNX0000166,PF-C,Bank Gamma,Neha Thakur,8913950293,neha.thakur166@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,54600,50820,2020-07-30,2020-04-24,New
+LNX0000167,PF-D,Bank Delta,Kavita Desai,7332291301,kavita.desai167@example.com,Kochi,Kerala,Bangalore,English,Personal Loan,473500,515070,2023-04-13,2022-12-23,New
+LNX0000168,PF-D,Bank Delta,Ravi Reddy,6575688772,ravi.reddy168@example.com,Surat,Gujarat,Dadar,Hindi,Credit Card,27600,36790,2024-02-27,2023-08-13,New
+LNX0000169,PF-B,Bank Beta,Sanjay Khan,9543494487,sanjay.khan169@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Personal Loan,232600,327510,2024-11-07,2024-06-18,New
+LNX0000170,PF-B,Bank Beta,Suresh Naik,7264467808,suresh.naik170@example.com,Nashik,Maharashtra,Dadar,Marathi,Personal Loan,257400,254890,2023-01-10,2022-07-31,New
+LNX0000171,PF-C,Bank Gamma,Nitin More,6370356811,nitin.more171@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,399600,531410,2020-10-01,2020-05-14,New
+LNX0000172,PF-A,Bank Alpha,Priya Reddy,8457360319,priya.reddy172@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,483200,526230,2021-05-24,2021-01-18,New
+LNX0000173,PF-E,Bank Epsilon,Swati Yadav,7406091329,swati.yadav173@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,228000,313490,2022-10-19,2022-06-30,New
+LNX0000174,PF-A,Bank Alpha,Divya Joshi,6758465840,divya.joshi174@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,395400,430770,2019-09-20,2019-04-12,New
+LNX0000175,PF-C,Bank Gamma,Mahesh Iyer,8252467416,mahesh.iyer175@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Credit Card,434900,441200,2024-01-11,2023-10-03,New
+LNX0000176,PF-B,Bank Beta,Priya Gupta,8844361834,priya.gupta176@example.com,Mysuru,Karnataka,Bangalore,Kannada,Credit Card,68500,97420,2019-04-24,2019-02-11,New
+LNX0000177,PF-A,Bank Alpha,Sneha Tiwari,6505437522,sneha.tiwari177@example.com,Surat,Gujarat,Dadar,Hindi,Personal Loan,24700,35850,2022-05-08,2021-11-17,New
+LNX0000178,PF-D,Bank Delta,Sneha Joshi,9770116312,sneha.joshi178@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,158000,166390,2020-08-09,2020-06-07,New
+LNX0000179,PF-B,Bank Beta,Venkatesh Iyer,6994220378,venkatesh.iyer179@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Personal Loan,325600,459410,2020-07-26,2020-02-03,New
+LNX0000180,PF-A,Bank Alpha,Ganesh Kulkarni,8237995832,ganesh.kulkarni180@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Personal Loan,211500,228840,2023-02-08,2022-11-04,New
+LNX0000181,PF-D,Bank Delta,Divya Tiwari,7027294571,divya.tiwari181@example.com,Nashik,Maharashtra,Dadar,Marathi,Personal Loan,142300,129930,2023-08-14,2023-04-13,New
+LNX0000182,PF-C,Bank Gamma,Deepak Thakur,7551320956,deepak.thakur182@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,109400,104410,2024-05-30,2024-03-02,New
+LNX0000183,PF-E,Bank Epsilon,Lakshmi Shaikh,7993296847,lakshmi.shaikh183@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,185100,273310,2023-11-05,2023-07-02,New
+LNX0000184,PF-C,Bank Gamma,Neha Thakur,8548450606,neha.thakur184@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,260400,212350,2019-03-07,2018-09-15,New
+LNX0000185,PF-E,Bank Epsilon,Pooja Thakur,7148256359,pooja.thakur185@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,53200,76050,2021-06-13,2021-02-03,New
+LNX0000186,PF-B,Bank Beta,Ravi Thakur,7221225083,ravi.thakur186@example.com,Kochi,Kerala,Bangalore,English,Personal Loan,84900,115730,2024-07-22,2024-03-14,New
+LNX0000187,PF-E,Bank Epsilon,Pooja Reddy,8359939092,pooja.reddy187@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,445600,457400,2019-08-15,2019-02-04,New
+LNX0000188,PF-A,Bank Alpha,Rahul Nair,7604653657,rahul.nair188@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,410400,331030,2021-12-26,2021-08-25,New
+LNX0000189,PF-A,Bank Alpha,Meena Joshi,6129677902,meena.joshi189@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Credit Card,23800,23440,2023-12-31,2023-06-22,New
+LNX0000190,PF-C,Bank Gamma,Kiran Rao,9551166785,kiran.rao190@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,70100,65410,2020-03-17,2019-09-13,New
+LNX0000191,PF-A,Bank Alpha,Anita Naik,6020885531,anita.naik191@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,169400,141330,2022-07-01,2022-02-27,New
+LNX0000192,PF-C,Bank Gamma,Rahul Yadav,8933646569,rahul.yadav192@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,400000,447330,2023-12-25,2023-09-30,New
+LNX0000193,PF-A,Bank Alpha,Rakesh More,6130505856,rakesh.more193@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,499900,550190,2022-02-19,2021-11-23,New
+LNX0000194,PF-E,Bank Epsilon,Mahesh Iyer,7886925607,mahesh.iyer194@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,140600,173640,2024-03-07,2023-09-28,New
+LNX0000195,PF-D,Bank Delta,Asha Yadav,8430255655,asha.yadav195@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,344100,508020,2019-08-01,2019-03-02,New
+LNX0000196,PF-D,Bank Delta,Swati Khan,7730320501,swati.khan196@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,282600,382080,2019-08-08,2019-03-18,New
+LNX0000197,PF-D,Bank Delta,Fatima Pawar,9215591108,fatima.pawar197@example.com,Mysuru,Karnataka,Bangalore,Kannada,Personal Loan,109300,122920,2019-10-11,2019-05-21,New
+LNX0000198,PF-B,Bank Beta,Vijay Nair,8985619110,vijay.nair198@example.com,Pune,Maharashtra,Dadar,Marathi,Credit Card,391600,472490,2019-06-14,2019-04-07,New
+LNX0000199,PF-E,Bank Epsilon,Deepak Patil,7042325699,deepak.patil199@example.com,Nagpur,Maharashtra,Dadar,Marathi,Credit Card,225200,179560,2019-02-25,2018-09-07,New
+LNX0000200,PF-C,Bank Gamma,Imran Thakur,7472421861,imran.thakur200@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,440800,626430,2019-12-13,2019-06-17,New
+LNX0000201,PF-C,Bank Gamma,Venkatesh Nair,8901671714,venkatesh.nair201@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,244500,218750,2019-12-26,2019-06-10,New
+LNX0000202,PF-B,Bank Beta,Imran Rao,9879200933,imran.rao202@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Personal Loan,320400,342410,2022-05-28,2021-11-27,New
+LNX0000203,PF-C,Bank Gamma,Anita Reddy,8174262382,anita.reddy203@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,333800,492580,2023-06-12,2023-04-10,New
+LNX0000204,PF-C,Bank Gamma,Divya Kulkarni,6829066775,divya.kulkarni204@example.com,Mysuru,Karnataka,Bangalore,Kannada,Personal Loan,253300,355300,2021-06-04,2021-01-20,New
+LNX0000205,PF-E,Bank Epsilon,Nitin Joshi,6559343486,nitin.joshi205@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,70800,78840,2023-12-07,2023-07-10,New
+LNX0000206,PF-D,Bank Delta,Manoj Jadhav,6793244612,manoj.jadhav206@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Personal Loan,185800,221660,2022-02-07,2021-07-30,New
+LNX0000207,PF-C,Bank Gamma,Deepak Pawar,9822139818,deepak.pawar207@example.com,Hyderabad,Telangana,Bangalore,Telugu,Credit Card,124200,127970,2020-02-28,2019-12-29,New
+LNX0000208,PF-D,Bank Delta,Sanjay Khan,9743720192,sanjay.khan208@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,248800,347870,2020-03-30,2019-10-25,New
+LNX0000209,PF-C,Bank Gamma,Kavita Rao,9476774558,kavita.rao209@example.com,Nagpur,Maharashtra,Dadar,Marathi,Personal Loan,334900,408090,2019-01-28,2018-07-25,New
+LNX0000210,PF-B,Bank Beta,Neha Khan,7349845410,neha.khan210@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,210000,161770,2022-09-14,2022-04-25,New
+LNX0000211,PF-A,Bank Alpha,Rahul Patil,9555605472,rahul.patil211@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,427400,401690,2022-07-03,2021-12-18,New
+LNX0000212,PF-D,Bank Delta,Ganesh Joshi,7106264226,ganesh.joshi212@example.com,Hyderabad,Telangana,Bangalore,Telugu,Personal Loan,307600,326810,2019-02-12,2018-11-27,New
+LNX0000213,PF-E,Bank Epsilon,Venkatesh Khan,9823912230,venkatesh.khan213@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,174100,256200,2024-06-16,2024-01-06,New
+LNX0000214,PF-C,Bank Gamma,Ravi Hegde,6886942220,ravi.hegde214@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Credit Card,95500,79890,2022-07-26,2022-02-23,New
+LNX0000215,PF-A,Bank Alpha,Imran Shaikh,8876348037,imran.shaikh215@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,436800,616110,2023-09-20,2023-06-12,New
+LNX0000216,PF-B,Bank Beta,Neha Thakur,9011525253,neha.thakur216@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Personal Loan,482800,570910,2022-12-17,2022-10-08,New
+LNX0000217,PF-E,Bank Epsilon,Rahul Shaikh,7534574524,rahul.shaikh217@example.com,Chennai,Tamil Nadu,Bangalore,Tamil,Personal Loan,100600,117590,2019-05-01,2019-01-11,New
+LNX0000218,PF-C,Bank Gamma,Nitin Pawar,6156072579,nitin.pawar218@example.com,Kochi,Kerala,Bangalore,English,Credit Card,441300,660920,2021-03-24,2020-10-10,New
+LNX0000219,PF-A,Bank Alpha,Sneha Naik,6698039842,sneha.naik219@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,448000,489360,2024-03-29,2023-10-11,New
+LNX0000220,PF-B,Bank Beta,Ravi Iyer,8205785630,ravi.iyer220@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,158700,115260,2020-02-12,2019-11-28,New
+LNX0000221,PF-A,Bank Alpha,Priya Iyer,6665911105,priya.iyer221@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,497300,652080,2019-06-29,2019-01-08,New
+LNX0000222,PF-A,Bank Alpha,Meena Khan,9646985850,meena.khan222@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,277800,195820,2024-02-09,2023-09-25,New
+LNX0000223,PF-A,Bank Alpha,Anita Jadhav,9024080269,anita.jadhav223@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,499000,437680,2022-06-20,2022-01-09,New
+LNX0000224,PF-A,Bank Alpha,Meena Thakur,8123358279,meena.thakur224@example.com,Mysuru,Karnataka,Bangalore,Kannada,Personal Loan,172800,122010,2022-04-05,2021-10-26,New
+LNX0000225,PF-C,Bank Gamma,Sanjay Pawar,9205294595,sanjay.pawar225@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Personal Loan,120900,125470,2022-12-09,2022-08-09,New
+LNX0000226,PF-B,Bank Beta,Neha Patil,7099462111,neha.patil226@example.com,Nagpur,Maharashtra,Dadar,Marathi,Personal Loan,40700,39600,2020-09-30,2020-06-01,New
+LNX0000227,PF-E,Bank Epsilon,Ganesh Pillai,9404686425,ganesh.pillai227@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,216700,179290,2022-12-16,2022-08-23,New
+LNX0000228,PF-B,Bank Beta,Pooja Gowda,9630891768,pooja.gowda228@example.com,Indore,Madhya Pradesh,Dadar,Hindi,Personal Loan,206100,285800,2020-06-20,2020-02-15,New
+LNX0000229,PF-B,Bank Beta,Sanjay Yadav,6582604623,sanjay.yadav229@example.com,Kochi,Kerala,Bangalore,English,Personal Loan,122800,171660,2020-05-17,2019-11-08,New
+LNX0000230,PF-A,Bank Alpha,Fatima Khan,7344711028,fatima.khan230@example.com,Hyderabad,Telangana,Bangalore,Telugu,Personal Loan,32200,32580,2019-12-19,2019-09-05,New
+LNX0000231,PF-A,Bank Alpha,Divya Joshi,7309847745,divya.joshi231@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,263200,224840,2022-06-28,2022-04-07,New
+LNX0000232,PF-C,Bank Gamma,Kavita Rao,7031754916,kavita.rao232@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,400400,528520,2020-06-25,2020-02-16,New
+LNX0000233,PF-D,Bank Delta,Rahul Jadhav,6195052612,rahul.jadhav233@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,398900,358500,2023-06-29,2023-01-30,New
+LNX0000234,PF-E,Bank Epsilon,Shalini Iyer,7812779275,shalini.iyer234@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Credit Card,53100,54360,2020-10-25,2020-05-08,New
+LNX0000235,PF-A,Bank Alpha,Divya Shaikh,8993955156,divya.shaikh235@example.com,Vasai-Virar,Maharashtra,Jogeshwari,Hindi,Credit Card,167100,192430,2021-07-21,2021-01-15,New
+LNX0000236,PF-A,Bank Alpha,Sneha Pawar,6039868892,sneha.pawar236@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,55100,77140,2019-07-13,2019-03-13,New
+LNX0000237,PF-C,Bank Gamma,Shalini Naik,6374775163,shalini.naik237@example.com,Mysuru,Karnataka,Bangalore,Kannada,Personal Loan,342400,513080,2021-06-23,2021-02-12,New
+LNX0000238,PF-D,Bank Delta,Venkatesh Kulkarni,7525607430,venkatesh.kulkarni238@example.com,Hyderabad,Telangana,Bangalore,Telugu,Credit Card,390900,432690,2021-04-23,2020-11-05,New
+LNX0000239,PF-E,Bank Epsilon,Rakesh Thakur,7384212527,rakesh.thakur239@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Personal Loan,213300,242120,2021-10-19,2021-08-05,New
+LNX0000240,PF-B,Bank Beta,Imran Shaikh,6553386717,imran.shaikh240@example.com,Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,418400,517250,2021-09-01,2021-05-03,New
+LNX0000241,PF-C,Bank Gamma,Ravi Shaikh,6588689880,ravi.shaikh241@example.com,Nashik,Maharashtra,Dadar,Marathi,Personal Loan,136200,159350,2021-09-13,2021-04-21,New
+LNX0000242,PF-B,Bank Beta,Asha Pillai,6387063315,asha.pillai242@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,352600,481270,2020-04-13,2019-12-01,New
+LNX0000243,PF-A,Bank Alpha,Rekha Gupta,7348397748,rekha.gupta243@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,110500,139370,2024-01-10,2023-10-14,New
+LNX0000244,PF-C,Bank Gamma,Meena Desai,8793493029,meena.desai244@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,28800,30950,2024-06-11,2024-03-22,New
+LNX0000245,PF-D,Bank Delta,Neha Gowda,8674035277,neha.gowda245@example.com,Pune,Maharashtra,Dadar,Marathi,Personal Loan,464800,445020,2023-01-11,2022-10-20,New
+LNX0000246,PF-B,Bank Beta,Amit Tiwari,8199431147,amit.tiwari246@example.com,Nagpur,Maharashtra,Dadar,Marathi,Credit Card,40700,53700,2020-08-17,2020-04-04,New
+LNX0000247,PF-B,Bank Beta,Sneha Shaikh,7395701495,sneha.shaikh247@example.com,Kochi,Kerala,Bangalore,English,Credit Card,287600,288600,2022-12-30,2022-08-11,New
+LNX0000248,PF-C,Bank Gamma,Anita Patil,7530836308,anita.patil248@example.com,Navi Mumbai,Maharashtra,Jogeshwari,Marathi,Personal Loan,484300,650040,2023-07-10,2023-04-29,New
+LNX0000249,PF-C,Bank Gamma,Asha Khan,9683711378,asha.khan249@example.com,Thane,Maharashtra,Jogeshwari,Hindi,Credit Card,136200,170300,2020-11-01,2020-07-29,New
+LNX0000250,PF-A,Bank Alpha,Nitin Pillai,9153719173,nitin.pillai250@example.com,Bengaluru,Karnataka,Bangalore,Kannada,Personal Loan,198800,254130,2019-01-12,2018-11-05,New
+LNXBAD01,PF-A,Bank Alpha,Test Customer,12345,,Mumbai,Maharashtra,Jogeshwari,Hindi,Personal Loan,1000,1000,2021-01-01,,New
+LNXBAD02,PF-A,Bank Alpha,Test Customer,9876543210,,Delhi,Delhi,Delhi,Hindi,Personal Loan,1000,1000,2021-01-01,,New
+LNXBAD03,PF-A,Bank Alpha,Test Customer,9876543210,,Pune,Maharashtra,Dadar,Marathi,Home Loan,1000,1000,2021-01-01,,New
+LNXBAD04,PF-A,Bank Alpha,Test Customer,9876543210,,Pune,Maharashtra,Dadar,Marathi,Credit Card,1000,abc,2021-01-01,,New
+LNXBAD05,PF-A,Bank Alpha,,9876543210,,Pune,Maharashtra,Dadar,Marathi,Credit Card,1000,1000,31/31/2021,,New
+LNX0000001,PF-A,Bank Alpha,Duplicate Row,9876543210,,Pune,Maharashtra,Dadar,Marathi,Credit Card,1000,1000,2021-01-01,,New

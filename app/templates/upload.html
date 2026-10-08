@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Upload accounts{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>Upload accounts</h1>
+    <p>Load a purchased portfolio from CSV. Valid rows are imported in bulk; bad rows and duplicate loan numbers are skipped and reported.</p>
+  </div>
+</div>
+
+<div class="upload-layout">
+  <div class="stack">
+    <div class="card">
+      <form class="card-body" method="post" action="/upload" enctype="multipart/form-data" id="upload-form">
+        <label class="dropzone" id="dropzone">
+          <input type="file" name="file" accept=".csv,text/csv" required id="file-input">
+          <div style="font-size:30px">⇪</div>
+          <div class="big">Drop a CSV here or click to choose</div>
+          <div class="faint">Tested with 1,00,000 rows</div>
+          <div class="file" id="file-name"></div>
+        </label>
+        <div class="row mt"><span class="spacer"></span>
+          <button class="btn primary" type="submit" id="upload-btn"><span class="spinner"></span><span>Upload &amp; import</span></button></div>
+      </form>
+    </div>
+
+    {% if current %}
+    <div class="card">
+      <div class="card-head"><h2>Import result · {{ current.filename }}</h2><span class="faint">{{ current.uploaded_at | dt }} · {{ '%.1f' % (current.duration_ms / 1000) }}s</span></div>
+      <div class="card-body">
+        <div class="result-grid">
+          <div><div class="faint">Rows read</div><div class="value">{{ current.total_rows | num }}</div></div>
+          <div><div class="faint">Imported</div><div class="value" style="color:var(--good)">{{ current.inserted | num }}</div></div>
+          <div><div class="faint">Duplicates skipped</div><div class="value" style="color:var(--warn)">{{ current.duplicates | num }}</div></div>
+          <div><div class="faint">Rows with errors</div><div class="value" style="color:var(--bad)">{{ current.failed | num }}</div></div>
+        </div>
+        {% if current.inserted %}
+        <div class="row mt"><a class="btn primary" href="/allocation?owner=none&batch={{ current.id }}">Allocate these {{ current.inserted | num }} accounts →</a></div>
+        {% endif %}
+      </div>
+      {% if errors %}
+      <div class="card-head" style="border-top:1px solid var(--border)"><h3>Errors (first {{ errors | length }})</h3>
+        <a class="btn sm" href="/upload/{{ current.id }}/errors.csv">Download full error report</a></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Line</th><th>Loan no.</th><th>Problem</th></tr></thead>
+        <tbody>{% for line, loan, err in errors %}<tr><td class="mono">{{ line }}</td><td class="mono">{{ loan or '—' }}</td><td>{{ err }}</td></tr>{% endfor %}</tbody>
+      </table></div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="card">
+      <div class="card-head"><h2>Recent uploads</h2></div>
+      {% if batches %}
+      <div class="table-wrap"><table>
+        <thead><tr><th>When</th><th>File</th><th>By</th><th class="num">Rows</th><th class="num">Imported</th><th class="num">Duplicates</th><th class="num">Errors</th><th class="num">Time</th></tr></thead>
+        <tbody>{% for b in batches %}
+        <tr class="clickable" data-href="/upload?batch={{ b.id }}"><td>{{ b.uploaded_at | dt }}</td><td class="mono">{{ b.filename }}</td><td>{{ b.uploaded_by.name if b.uploaded_by else 'Seed script' }}</td>
+          <td class="num">{{ b.total_rows | num }}</td><td class="num">{{ b.inserted | num }}</td><td class="num">{{ b.duplicates | num }}</td><td class="num">{{ b.failed | num }}</td>
+          <td class="num">{{ '%.1f' % (b.duration_ms / 1000) }}s</td></tr>
+        {% endfor %}</tbody>
+      </table></div>
+      {% else %}<div class="card-body faint">No uploads yet.</div>{% endif %}
+    </div>
+  </div>
+
+  <aside class="card">
+    <div class="card-head"><h2>File format</h2></div>
+    <div class="card-body">
+      <p class="muted" style="margin-top:0">UTF-8 CSV with a header row. Column order does not matter.</p>
+      <h3 style="margin-bottom:8px">Required</h3>
+      <div class="cols">{% for c in required %}<code class="req">{{ c }}</code>{% endfor %}</div>
+      <h3 style="margin:16px 0 8px">Optional</h3>
+      <div class="cols">{% for c in optional %}<code>{{ c }}</code>{% endfor %}</div>
+      <h3 style="margin:16px 0 8px">Rules</h3>
+      <ul class="muted" style="padding-left:18px;margin:0;font-size:13px">
+        <li><code>office</code>: Jogeshwari, Dadar or Bangalore</li>
+        <li><code>product</code>: Personal Loan or Credit Card</li>
+        <li><code>mobile</code>: 10 digits (a leading 91 is removed)</li>
+        <li>Dates: YYYY-MM-DD (DD-MM-YYYY also accepted)</li>
+        <li>Amounts in rupees; commas and ₹ are fine</li>
+        <li>A loan number that already exists is skipped, never overwritten</li>
+        <li>Every imported account starts as <b>New</b> and unallocated</li>
+      </ul>
+    </div>
+  </aside>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  const dz = document.getElementById('dropzone'), input = document.getElementById('file-input');
+  const name = document.getElementById('file-name');
+  const show = () => { const f = input.files[0]; name.textContent = f ? `${f.name} · ${(f.size / 1048576).toFixed(1)} MB` : ''; };
+  input.addEventListener('change', show);
+  ['dragenter', 'dragover'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('drag'); }));
+  ['dragleave', 'drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('drag'); }));
+  dz.addEventListener('drop', e => { input.files = e.dataTransfer.files; show(); });
+  document.getElementById('upload-form').addEventListener('submit', () => {
+    const b = document.getElementById('upload-btn');
+    b.classList.add('loading'); b.lastElementChild.textContent = 'Importing…';
+    setTimeout(() => b.disabled = true, 0);
+  });
+})();
+</script>
+{% endblock %}

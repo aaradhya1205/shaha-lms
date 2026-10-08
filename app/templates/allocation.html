@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block title %}Allocation{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>Allocate accounts</h1>
+    <p>Tick accounts (or take everything matching the filters), choose one or more callers, and assign.
+       Reassigning keeps every call, promise and payment — the move is logged in the account's history.</p>
+  </div>
+</div>
+
+<div class="alloc-layout">
+  <div class="card">
+    <form class="filters" method="get" action="/allocation">
+      {% if filters.batch_id %}<input type="hidden" name="batch" value="{{ filters.batch_id }}">
+      <span class="tag" style="padding:6px 10px">Upload #{{ filters.batch_id }} <a href="/allocation" title="Show all" style="margin-left:6px">✕</a></span>{% endif %}
+      <div class="search"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" name="q" value="{{ filters.q }}" placeholder="Name, mobile or loan number"></div>
+      <select name="owner" data-autosubmit>
+        <option value="none" {{ 'selected' if filters.unallocated }}>Unallocated only</option>
+        <option value="" {{ 'selected' if not filters.unallocated and not filters.owner_id }}>All (incl. allocated)</option>
+        {% for c in callers %}<option value="{{ c.id }}" {{ 'selected' if filters.owner_id == c.id }}>Owned by {{ c.name }} ({{ c.code }})</option>{% endfor %}
+      </select>
+      {% if user.role in ('head', 'coo') %}
+      <select name="office" data-autosubmit>
+        <option value="">All offices</option>
+        {% for o in offices %}<option value="{{ o.id }}" {{ 'selected' if filters.office_id == o.id }}>{{ o.name }}</option>{% endfor %}
+      </select>
+      {% endif %}
+      <select name="status" data-autosubmit>
+        <option value="">Any open status</option>
+        {% for s in statuses %}<option {{ 'selected' if filters.status == s }}>{{ s }}</option>{% endfor %}
+      </select>
+      <select name="product" data-autosubmit>
+        <option value="">All products</option>
+        {% for p in products %}<option {{ 'selected' if filters.product == p }}>{{ p }}</option>{% endfor %}
+      </select>
+      <select name="portfolio" data-autosubmit>
+        <option value="">All portfolios</option>
+        {% for p in portfolios %}<option {{ 'selected' if filters.portfolio == p }}>{{ p }}</option>{% endfor %}
+      </select>
+      <select name="sort" data-autosubmit>
+        {% for k, label in sorts.items() %}<option value="{{ k }}" {{ 'selected' if filters.sort == k }}>Sort: {{ label }}</option>{% endfor %}
+      </select>
+      <button class="btn primary" type="submit">Filter</button>
+    </form>
+
+    {% if rows %}
+    <div class="table-wrap">
+    <table id="alloc-table">
+      <thead><tr>
+        <th style="width:36px"><input type="checkbox" id="check-all" title="Select all on this page"></th>
+        <th>Customer</th><th>Loan</th><th>Office</th><th class="num">Balance</th><th>Status</th><th>Current caller</th>
+      </tr></thead>
+      <tbody>
+      {% for a in rows %}
+        <tr>
+          <td><input type="checkbox" name="account_ids" value="{{ a.id }}" form="alloc-form" class="row-check"></td>
+          <td><a class="cust-name" href="/accounts/{{ a.id }}">{{ a.customer_name }}</a><span class="sub">{{ a.city or '' }} · {{ a.language or '' }}</span></td>
+          <td><span class="mono">{{ a.loan_no }}</span><span class="sub">{{ a.product }} · {{ a.portfolio }}</span></td>
+          <td>{{ a.office.name }}</td>
+          <td class="num">{{ a.balance | inr }}</td>
+          <td><span class="badge s-{{ a.status }}">{{ a.status }}</span></td>
+          <td>{% if a.owner %}{{ a.owner.name }} <span class="faint">{{ a.owner.code }}</span>{% else %}<span class="tag">Unallocated</span>{% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    <div class="pager">
+      <span><b>{{ total | num }}</b> accounts match</span>
+      <div class="row">
+        {% if filters.page > 1 %}<a class="btn sm" href="?{{ qs_page }}&page={{ filters.page - 1 }}">← Prev</a>{% endif %}
+        <span>Page {{ filters.page }} of {{ pages | num }}</span>
+        {% if filters.page < pages %}<a class="btn sm" href="?{{ qs_page }}&page={{ filters.page + 1 }}">Next →</a>{% endif %}
+      </div>
+    </div>
+    {% else %}
+    <div class="empty"><b>Nothing to allocate</b>No accounts match these filters{% if filters.unallocated %} — every account here is already allocated{% endif %}.</div>
+    {% endif %}
+  </div>
+
+  <aside class="card action-panel">
+    <div class="card-head"><h2>Assign</h2></div>
+    <form class="card-body" method="post" action="/allocation" id="alloc-form">
+      <input type="hidden" name="return_qs" value="{{ qs_page }}">
+      <div class="scope-choice">
+        <label><input type="radio" name="scope" value="selected" checked> <span><b id="sel-count">0</b> ticked account(s)</span></label>
+        <label><input type="radio" name="scope" value="all"> <span>All <b>{{ total | num }}</b> matching the filters
+          <span class="hint" style="display:block">Up to <input type="number" name="limit" value="{{ [total, max_bulk] | min }}" min="1" max="{{ max_bulk }}" style="width:90px;padding:3px 6px;display:inline-block"> accounts, in the sort order shown</span></span></label>
+      </div>
+
+      <label>Caller(s) <span class="faint">— pick several to split round-robin</span></label>
+      <div class="caller-list">
+        {% for team, members in teams.items() %}
+          {% if user.role != 'manager' %}<div class="team">{{ team }}'s team · {{ members[0].office.name }}</div>{% endif %}
+          {% for c in members %}
+          <label class="caller-item"><input type="checkbox" name="caller_ids" value="{{ c.id }}" class="caller-check">
+            {{ c.name }} <span class="faint">{{ c.code }}</span><span class="load">{{ load.get(c.id, 0) | num }} open</span></label>
+          {% endfor %}
+        {% endfor %}
+      </div>
+      <div class="field mt"><label for="note">Note <span class="faint">(optional)</span></label>
+        <input type="text" name="note" id="note" maxlength="255" placeholder="e.g. Marathi-speaking customers"></div>
+      <div class="sel-summary" id="alloc-summary">Select accounts and at least one caller.</div>
+      <button class="btn primary block" type="submit" id="alloc-btn" disabled>Allocate</button>
+    </form>
+  </aside>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  const form = document.getElementById('alloc-form');
+  const rowChecks = [...document.querySelectorAll('.row-check')];
+  const callerChecks = [...document.querySelectorAll('.caller-check')];
+  const all = document.getElementById('check-all');
+  const total = {{ total }};
+  function update() {
+    const scope = form.querySelector('[name=scope]:checked').value;
+    const ticked = rowChecks.filter(c => c.checked).length;
+    const limit = Number(form.querySelector('[name=limit]').value || 0);
+    const n = scope === 'all' ? Math.min(total, limit) : ticked;
+    const callers = callerChecks.filter(c => c.checked).length;
+    document.getElementById('sel-count').textContent = ticked;
+    rowChecks.forEach(c => c.closest('tr').classList.toggle('selected', c.checked));
+    const s = document.getElementById('alloc-summary');
+    s.textContent = n && callers
+      ? `${n.toLocaleString('en-IN')} account(s) → ${callers} caller(s)` + (callers > 1 ? ` · ~${Math.ceil(n / callers).toLocaleString('en-IN')} each` : '')
+      : 'Select accounts and at least one caller.';
+    document.getElementById('alloc-btn').disabled = !(n && callers);
+  }
+  if (all) all.addEventListener('change', () => { rowChecks.forEach(c => c.checked = all.checked); update(); });
+  form.addEventListener('change', update);
+  form.addEventListener('input', update);
+  rowChecks.forEach(c => c.addEventListener('change', () => {
+    form.querySelector('[name=scope][value=selected]').checked = true; update();
+  }));
+  update();
+})();
+</script>
+{% endblock %}

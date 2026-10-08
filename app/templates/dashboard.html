@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{% if user.role == 'manager' %}{{ user.name }}'s team · {{ user.office.name }}{% else %}Collections overview{% endif %}</h1>
+    <p>{% if user.role == 'manager' %}Your callers' accounts and the unallocated accounts in your office.{% else %}All offices · Jogeshwari, Dadar, Bangalore.{% endif %}</p>
+  </div>
+  <div class="row">
+    {% if unallocated %}<a class="btn" href="/allocation?owner=none">{{ unallocated | num }} unallocated → Allocate</a>{% endif %}
+    {% if perm.can_upload(user) %}<a class="btn primary" href="/upload">Upload accounts</a>{% endif %}
+  </div>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="label">Accounts</div><div class="value">{{ count | num }}</div><div class="sub">{{ unallocated | num }} unallocated</div></div>
+  <div class="kpi"><div class="label">Outstanding (as bought)</div><div class="value">{{ outstanding | inr }}</div><div class="sub">face value of the book</div></div>
+  <div class="kpi accent-good"><div class="label">Total recovered</div><div class="value">{{ paid | inr }}</div><div class="sub">{{ '%.2f' % recovery }}% of outstanding</div></div>
+  <div class="kpi accent-good"><div class="label">Collected · {{ month_label }}</div><div class="value">{{ collected_month | inr }}</div><div class="sub">this month</div></div>
+  <div class="kpi accent-brand"><div class="label">Promises due today</div><div class="value">{{ ptp_due_today | num }}</div><div class="sub">{{ calls_today | num }} calls logged today</div></div>
+  <div class="kpi accent-bad"><div class="label">Promises · last 30 days</div><div class="value">{{ ptp_counts.get('Broken', 0) | num }} <span style="font-size:13px;color:var(--text-2);font-weight:600">broken</span></div>
+    <div class="sub">{{ ptp_counts.get('Pending', 0) | num }} pending · {{ ptp_counts.get('Kept', 0) | num }} kept</div></div>
+</div>
+
+<div class="card" style="margin-bottom:16px">
+  <div class="card-head"><h2>Book by status</h2></div>
+  <div class="card-body">
+    <div class="status-bar">{% for s in statuses %}{% set n = by_status.get(s, 0) %}{% if n %}<span class="c-{{ s }}" style="width: {{ n / count * 100 if count else 0 }}%" title="{{ s }}: {{ n }}"></span>{% endif %}{% endfor %}</div>
+    <div class="legend">{% for s in statuses %}<a href="/accounts?status={{ s }}{{ '&closed=1' if s in ('Closed', 'Settled') }}" style="color:inherit"><i class="c-{{ s }}"></i>{{ s }} <b>{{ by_status.get(s, 0) | num }}</b></a>{% endfor %}</div>
+  </div>
+</div>
+
+{% if offices %}
+<div class="card" style="margin-bottom:16px">
+  <div class="card-head"><h2>By office</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Office</th><th class="num">Accounts</th><th class="num">Unallocated</th><th class="num">Outstanding</th><th class="num">Recovered</th><th class="num">Recovery %</th></tr></thead>
+    <tbody>{% for name, n, o, p, u in offices %}
+      <tr><td><b>{{ name }}</b></td><td class="num">{{ n | num }}</td><td class="num">{{ (u or 0) | num }}</td><td class="num">{{ o | inr }}</td><td class="num">{{ p | inr }}</td><td class="num">{{ '%.2f' % (p / o * 100 if o else 0) }}%</td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+</div>
+{% endif %}
+
+<div class="card">
+  <div class="card-head"><h2>Caller performance</h2><span class="faint">sorted by amount collected in {{ month_label }}</span></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Caller</th>{% if user.role != 'manager' %}<th>Office</th><th>Manager</th>{% endif %}<th class="num">Open accounts</th><th class="num">Due today / overdue</th><th class="num">Calls today</th><th class="num">Open PTPs</th><th class="num">Broken (30d)</th><th class="num">Collected</th></tr></thead>
+    <tbody>{% for r in team %}
+      <tr class="clickable" data-href="/accounts?owner={{ r.user.id }}">
+        <td><b>{{ r.user.name }}</b> <span class="faint">{{ r.user.code }}</span></td>
+        {% if user.role != 'manager' %}<td>{{ r.user.office.name }}</td><td>{{ r.user.manager.name if r.user.manager else '—' }}</td>{% endif %}
+        <td class="num">{{ r.open | num }}</td><td class="num">{{ r.due | num }}</td><td class="num">{{ r.calls | num }}</td>
+        <td class="num">{{ r.open_ptps | num }}</td><td class="num" style="{{ 'color:var(--bad);font-weight:600' if r.broken }}">{{ r.broken | num }}</td>
+        <td class="num"><b>{{ r.collected | inr }}</b></td>
+      </tr>
+    {% endfor %}</tbody>
+  </table></div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block main_class %}{% endblock %}
+{% block content %}
+<div class="login-wrap">
+  <section class="login-hero">
+    <div class="brand"><span class="brand-mark">SF</span><span>Shaha Finlease<small>RBI-registered NBFC · Jogeshwari East, Mumbai</small></span></div>
+    <div>
+      <h1>Recovery operations, one account at a time.</h1>
+      <p>Allocate purchased NPA portfolios, work the daily queue, capture promises and record every rupee recovered.</p>
+      <ul>
+        <li>Role-based access for callers, managers and the Head of Collections</li>
+        <li>Today's promises and follow-ups first, in a prioritised queue</li>
+        <li>Calls logged in two clicks, promises tracked to Kept or Broken</li>
+      </ul>
+    </div>
+    <small style="opacity:.6">Prototype · dummy data only</small>
+  </section>
+  <section class="login-panel">
+    <div class="login-card">
+      <h2>Sign in</h2>
+      <p class="muted" style="margin:0 0 22px">Use your LMS username and password.</p>
+      {% for m in messages %}<div class="flash {{ m.kind }}">{{ m.message }}</div>{% endfor %}
+      {% if error %}<div class="flash error">{{ error }}</div>{% endif %}
+      <form method="post" action="/login">
+        <input type="hidden" name="next" value="{{ next }}">
+        <div class="field"><label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" required autofocus value="{{ username or '' }}"></div>
+        <div class="field"><label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required></div>
+        <button class="btn primary block" type="submit" style="margin-top:6px;padding:10px">Sign in</button>
+      </form>
+      <div class="card demo-users">
+        <div class="card-head"><h3>Demo logins</h3><span class="faint">password: <span class="mono">Shaha@123</span></span></div>
+        <table>
+          <tr><td>Head of Collections</td><td class="right"><button type="button" data-login="head">head</button></td></tr>
+          <tr><td>Manager · Jogeshwari (Rekha Khan)</td><td class="right"><button type="button" data-login="manager1">manager1</button></td></tr>
+          <tr><td>Caller · Jogeshwari (Vinod Reddy)</td><td class="right"><button type="button" data-login="caller1">caller1</button></td></tr>
+          <tr><td>Customer Service · Dadar</td><td class="right"><button type="button" data-login="cs2">cs2</button></td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+document.querySelectorAll('[data-login]').forEach(b => b.addEventListener('click', () => {
+  document.getElementById('username').value = b.dataset.login;
+  const p = document.getElementById('password'); p.value = 'Shaha@123'; p.focus();
+}));
+</script>
+{% endblock %}

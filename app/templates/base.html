@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}LMS{% endblock %} · Shaha Finlease</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b3d91'/><text x='16' y='22' font-size='16' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'>SF</text></svg>">
+</head>
+<body>
+{% if user %}
+{% set path = request.url.path %}
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">SF</span><span>Shaha Finlease<small>Loan Management System</small></span></a>
+    <nav class="nav">
+      {% if perm.can_allocate(user) %}<a href="/dashboard" class="{{ 'active' if path == '/dashboard' }}">Dashboard</a>{% endif %}
+      <a href="/accounts" class="{{ 'active' if path.startswith('/accounts') }}">{{ 'My Queue' if user.role == 'caller' else 'Accounts' }}</a>
+      {% if perm.can_allocate(user) %}<a href="/allocation" class="{{ 'active' if path.startswith('/allocation') }}">Allocation</a>{% endif %}
+      {% if perm.can_upload(user) %}<a href="/upload" class="{{ 'active' if path.startswith('/upload') }}">Upload</a>{% endif %}
+    </nav>
+    <div class="userbox">
+      <div class="who"><b>{{ user.name }}</b><span>{{ user.role_label }}{% if user.office and user.role not in ('head','coo') %} · {{ user.office.name }}{% elif user.role in ('head','coo') %} · All offices{% endif %}</span></div>
+      <form method="post" action="/logout"><button type="submit">Log out</button></form>
+    </div>
+  </div>
+</header>
+{% endif %}
+<main class="{% block main_class %}page{% endblock %}">
+  {% for m in messages %}<div class="flash {{ m.kind }}" role="status">{{ m.message }}</div>{% endfor %}
+  {% block content %}{% endblock %}
+</main>
+{% if user %}<div class="footer">Business date {{ today() | d }} · Dummy data only · Shaha Finlease LMS prototype</div>{% endif %}
+<script src="/static/app.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

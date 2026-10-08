@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+{% block title %}{{ a.customer_name }} · {{ a.loan_no }}{% endblock %}
+{% block content %}
+{% set pct = (a.total_paid / a.outstanding * 100) if a.outstanding else 0 %}
+<div class="row" style="margin-bottom:12px">
+  <a class="btn ghost sm" href="/accounts">← {{ 'My queue' if user.role == 'caller' else 'Accounts' }}</a>
+  <span class="spacer"></span>
+  {% if user.role == 'caller' %}<a class="btn sm" href="/queue/next?after={{ a.id }}">Skip to next in queue →</a>{% endif %}
+</div>
+
+<div class="acct-head">
+  <div>
+    <h1>{{ a.customer_name }} <span class="badge s-{{ a.status }}">{{ a.status }}</span></h1>
+    <div class="acct-meta">
+      <span class="mono">{{ a.loan_no }}</span>
+      <span>{{ a.product }}</span>
+      <span>{{ a.seller_bank }} · {{ a.portfolio }}</span>
+      <span>{{ a.office.name }} office</span>
+      <span>Caller: <b>{{ a.owner.name ~ ' (' ~ a.owner.code ~ ')' if a.owner else 'Unallocated' }}</b></span>
+    </div>
+  </div>
+  <a class="phone" href="tel:+91{{ a.mobile }}" title="Call customer">📞 +91 {{ a.mobile[:5] }} {{ a.mobile[5:] }}</a>
+</div>
+
+<div class="acct-layout">
+  <div class="stack">
+    <div class="card">
+      <div class="money-strip">
+        <div><div class="label">Outstanding (as bought)</div><div class="value">{{ a.outstanding | inr }}</div></div>
+        <div><div class="label">Total paid</div><div class="value" style="color:var(--good)">{{ a.total_paid | inr(true) }}</div></div>
+        <div><div class="label">Balance due</div><div class="value">{{ a.balance | inr(true) }}</div></div>
+        <div><div class="label">Recovered</div><div class="value">{{ '%.1f' % pct }}%</div></div>
+      </div>
+      <div class="progress"><span style="width: {{ [pct, 100] | min }}%"></span></div>
+    </div>
+
+    {% if open_ptp %}
+    <div class="open-ptp">
+      <div><b style="color:var(--violet)">Open promise: {{ open_ptp.amount | inr }} by {{ open_ptp.promised_date | d }}</b> ({{ open_ptp.promised_date | rel }})
+        {% if open_ptp.paid_amount %}<br><span class="muted">{{ open_ptp.paid_amount | inr }} paid towards it so far</span>{% endif %}</div>
+      <span class="badge p-Pending">Pending</span>
+    </div>
+    {% endif %}
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="card-head"><h3>Customer</h3></div>
+        <div class="card-body"><dl class="details">
+          <dt>Name</dt><dd>{{ a.customer_name }}</dd>
+          <dt>Mobile</dt><dd class="mono">{{ a.mobile }}</dd>
+          <dt>Email</dt><dd>{{ a.email or '—' }}</dd>
+          <dt>City / State</dt><dd>{{ a.city or '—' }}, {{ a.state or '—' }}</dd>
+          <dt>Language</dt><dd>{{ a.language or '—' }}</dd>
+        </dl></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Loan</h3></div>
+        <div class="card-body"><dl class="details">
+          <dt>Loan number</dt><dd class="mono">{{ a.loan_no }}</dd>
+          <dt>Product</dt><dd>{{ a.product }}</dd>
+          <dt>Original amount</dt><dd>{{ a.original_amount | inr }}</dd>
+          <dt>NPA date</dt><dd>{{ a.npa_date | d }}</dd>
+          <dt>Last bank payment</dt><dd>{{ a.last_payment_date | d }}</dd>
+          <dt>Calls made</dt><dd>{{ a.call_count }}{% if a.next_followup_date %} · next follow-up {{ a.next_followup_date | d }}{% endif %}</dd>
+        </dl></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Promises to pay</h2><span class="faint">{{ ptps | length }}</span></div>
+      {% if ptps %}
+      <div class="table-wrap"><table>
+        <thead><tr><th>Promised on</th><th class="num">Amount</th><th>Pay by</th><th class="num">Paid towards</th><th>Status</th><th>By</th></tr></thead>
+        <tbody>{% for p in ptps %}
+          <tr><td>{{ p.created_at | dt }}</td><td class="num">{{ p.amount | inr }}</td><td>{{ p.promised_date | d }}</td>
+            <td class="num">{{ p.paid_amount | inr(true) }}</td><td><span class="badge p-{{ p.status }}">{{ p.status }}</span></td><td>{{ p.created_by.name }}</td></tr>
+        {% endfor %}</tbody>
+      </table></div>
+      {% else %}<div class="card-body faint">No promises yet.</div>{% endif %}
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Payments</h2><span class="faint">{{ payments | length }} · total {{ a.total_paid | inr(true) }}</span></div>
+      {% if payments %}
+      <div class="table-wrap"><table>
+        <thead><tr><th>Date</th><th class="num">Amount</th><th>Mode</th><th>Reference</th><th>Type</th><th>Recorded by</th></tr></thead>
+        <tbody>{% for p in payments %}
+          <tr><td>{{ p.payment_date | d }}</td><td class="num"><b>{{ p.amount | inr(true) }}</b></td><td>{{ p.mode }}</td>
+            <td class="mono">{{ p.reference or '—' }}</td>
+            <td>{% if p.is_settlement %}<span class="badge s-Settled">Settlement</span>{% elif p.ptp_id %}<span class="tag">Against PTP</span>{% else %}<span class="tag">Payment</span>{% endif %}</td>
+            <td>{{ p.recorded_by.name }}</td></tr>
+        {% endfor %}</tbody>
+      </table></div>
+      {% else %}<div class="card-body faint">No payments recorded.</div>{% endif %}
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Activity</h2><span class="faint">calls, payments and allocations</span></div>
+      {% if timeline %}
+      <ul class="timeline">
+        {% for kind, at, e in timeline %}
+        <li>
+          {% if kind == 'call' %}
+            <div class="tl-icon tl-call">📞</div>
+            <div><div class="tl-title">{{ by_code[e.disposition].label if e.disposition in by_code else e.disposition }}</div>
+              <div class="tl-meta">{{ at | dt }} · {{ e.user.name }}{% if e.next_followup_date %} · follow-up {{ e.next_followup_date | d }}{% endif %}</div>
+              {% if e.remarks %}<div class="tl-body">{{ e.remarks }}</div>{% endif %}</div>
+          {% elif kind == 'payment' %}
+            <div class="tl-icon tl-payment">₹</div>
+            <div><div class="tl-title">{{ 'Settlement' if e.is_settlement else 'Payment' }} of {{ e.amount | inr(true) }} via {{ e.mode }}</div>
+              <div class="tl-meta">{{ at | dt }} · recorded by {{ e.recorded_by.name }} · paid on {{ e.payment_date | d }}</div></div>
+          {% else %}
+            <div class="tl-icon tl-allocation">⇄</div>
+            <div><div class="tl-title">{% if e.from_user %}Reassigned {{ e.from_user.name }} → {{ e.to_user.name }}{% else %}Allocated to {{ e.to_user.name }}{% endif %}</div>
+              <div class="tl-meta">{{ at | dt }} · by {{ e.allocated_by.name }}{% if e.note %} · “{{ e.note }}”{% endif %}</div></div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}<div class="card-body faint">No activity yet.</div>{% endif %}
+    </div>
+  </div>
+
+  <aside class="card action-panel" id="actions">
+    <div class="tabs" role="tablist">
+      <button type="button" class="active" data-tab="log">Log call</button>
+      <button type="button" data-tab="pay">Record payment</button>
+    </div>
+
+    <div class="tab-pane active" id="tab-log">
+      {% if can_work %}
+      <form method="post" action="/accounts/{{ a.id }}/calls" id="call-form">
+        <input type="hidden" name="disposition" id="disposition">
+        <label>1 · Disposition <span class="faint">(keys 1–9)</span></label>
+        <div class="dispo-grid">
+          {% for d in dispositions %}
+          <button type="button" class="dispo {{ d.tone }}" data-code="{{ d.code }}" data-followup="{{ default_followups[d.code] }}"><kbd>{{ loop.index }}</kbd>{{ d.label }}</button>
+          {% endfor %}
+        </div>
+
+        <div class="ptp-box" id="ptp-box" hidden>
+          <div class="field-row">
+            <div><label for="ptp_amount">Promise amount (₹)</label>
+              <input type="number" name="ptp_amount" id="ptp_amount" min="1" step="0.01" max="{{ a.balance | rupees_input }}" value="{{ a.balance | rupees_input }}"></div>
+            <div><label for="ptp_date">Pay by</label>
+              <input type="date" name="ptp_date" id="ptp_date" min="{{ today().isoformat() }}" max="{{ max_ptp_date }}" value="{{ default_ptp_date }}"></div>
+          </div>
+          <div class="row" style="margin-top:8px;gap:6px">
+            <span class="faint" style="font-size:12px">Quick:</span>
+            {% for days in [0, 1, 3, 7, 15] %}<button type="button" class="btn sm" data-ptp-days="{{ days }}">{{ 'Today' if days == 0 else '+' ~ days ~ 'd' }}</button>{% endfor %}
+          </div>
+        </div>
+
+        <div class="field" id="followup-field">
+          <label for="next_followup">2 · Next follow-up</label>
+          <input type="date" name="next_followup" id="next_followup" min="{{ today().isoformat() }}">
+          <div class="hint">Filled in automatically from the disposition — change only if needed.</div>
+        </div>
+        <div class="field">
+          <label for="remarks">Remarks <span class="faint">(optional)</span></label>
+          <textarea name="remarks" id="remarks" maxlength="2000" placeholder="What did the customer say?"></textarea>
+        </div>
+        <div class="row">
+          <button class="btn" type="submit" name="action" value="save" id="save-btn" disabled>Save</button>
+          <button class="btn primary" style="flex:1" type="submit" name="action" value="next" id="save-next-btn" disabled>Save &amp; next account <kbd>⌘↵</kbd></button>
+        </div>
+      </form>
+      {% elif a.is_terminal %}
+      <div class="notice">This account is <b>{{ a.status }}</b>. No further calls are needed.</div>
+      {% else %}
+      <div class="notice">Only the allocated caller or a supervisor can log calls on this account.</div>
+      {% endif %}
+    </div>
+
+    <div class="tab-pane" id="tab-pay">
+      {% if can_pay %}
+      <form method="post" action="/accounts/{{ a.id }}/payments" id="pay-form">
+        <div class="field-row">
+          <div class="field"><label for="amount">Amount received (₹)</label>
+            <input type="number" name="amount" id="amount" min="1" step="0.01" max="{{ a.balance | rupees_input }}" required
+                   value="{{ (open_ptp.amount - open_ptp.paid_amount) | rupees_input if open_ptp and open_ptp.amount > open_ptp.paid_amount else '' }}" placeholder="0">
+            <div class="hint">Balance due {{ a.balance | inr(true) }}</div></div>
+          <div class="field"><label for="payment_date">Payment date</label>
+            <input type="date" name="payment_date" id="payment_date" max="{{ today().isoformat() }}" value="{{ today().isoformat() }}" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="mode">Mode</label>
+            <select name="mode" id="mode">{% for m in modes %}<option>{{ m }}</option>{% endfor %}</select></div>
+          <div class="field"><label for="reference">Reference / UTR</label>
+            <input type="text" name="reference" id="reference" maxlength="60" placeholder="optional"></div>
+        </div>
+        <div class="field">
+          <label class="check"><input type="checkbox" name="is_settlement" value="1" id="is_settlement"> Full &amp; final settlement</label>
+          <div class="hint">Tick only if the customer is paying an agreed settlement — the account will be marked <b>Settled</b> even if less than the balance.</div>
+        </div>
+        <button class="btn good block" type="submit">Record payment</button>
+      </form>
+      {% elif a.is_terminal %}
+      <div class="notice">This account is <b>{{ a.status }}</b> — total paid {{ a.total_paid | inr(true) }}.</div>
+      {% else %}
+      <div class="notice">Your role cannot record payments.</div>
+      {% endif %}
+    </div>
+  </aside>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  // Tabs (also honour #pay / #log links after a redirect).
+  const tabs = document.querySelectorAll('[data-tab]');
+  function show(name) {
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+  }
+  tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.tab)));
+  if (location.hash === '#pay') show('pay');
+
+  const form = document.getElementById('call-form');
+  if (form) {
+    const hidden = document.getElementById('disposition');
+    const ptpBox = document.getElementById('ptp-box');
+    const followField = document.getElementById('followup-field');
+    const follow = document.getElementById('next_followup');
+    const buttons = form.querySelectorAll('.dispo');
+    const saves = [document.getElementById('save-btn'), document.getElementById('save-next-btn')];
+
+    function pick(btn) {
+      buttons.forEach(b => b.classList.toggle('selected', b === btn));
+      hidden.value = btn.dataset.code;
+      follow.value = btn.dataset.followup;
+      const isPtp = btn.dataset.code === 'PTP';
+      ptpBox.hidden = !isPtp;
+      followField.hidden = isPtp;          // follow-up = promise date
+      document.getElementById('ptp_amount').required = isPtp;
+      document.getElementById('ptp_date').required = isPtp;
+      saves.forEach(s => s.disabled = false);
+    }
+    buttons.forEach(b => b.addEventListener('click', () => pick(b)));
+    form.querySelectorAll('[data-ptp-days]').forEach(b => b.addEventListener('click', () => {
+      const d = new Date('{{ today().isoformat() }}T00:00:00');
+      d.setDate(d.getDate() + Number(b.dataset.ptpDays));
+      const pad = n => String(n).padStart(2, '0');  // local date, not UTC
+      document.getElementById('ptp_date').value = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    }));
+    form.addEventListener('submit', () => saves.forEach(s => setTimeout(() => s.disabled = true, 0)));
+
+    document.addEventListener('keydown', e => {
+      const typing = e.target.matches('input, textarea, select');
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && hidden.value) {
+        e.preventDefault();
+        document.getElementById('save-next-btn').click();
+      } else if (!typing && /^[1-9]$/.test(e.key) && buttons[e.key - 1]) {
+        show('log'); pick(buttons[e.key - 1]);
+      }
+    });
+  }
+
+  const pay = document.getElementById('pay-form');
+  if (pay) pay.addEventListener('submit', e => {
+    const amt = document.getElementById('amount').value;
+    const settle = document.getElementById('is_settlement').checked;
+    const msg = settle
+      ? `Record ₹${amt} as FULL & FINAL SETTLEMENT? The account will be closed as Settled.`
+      : `Record payment of ₹${amt}?`;
+    if (!confirm(msg)) e.preventDefault();
+  });
+})();
+</script>
+{% endblock %}
