@@ -14,7 +14,7 @@
         <li>Calls logged in two clicks, promises tracked to Kept or Broken</li>
       </ul>
     </div>
-    <small style="opacity:.6">Prototype · dummy data only</small>
+    <small style="opacity:.65">© {{ current_year() }} Shaha Finlease · Authorised personnel only. Activity is logged.</small>
   </section>
   <section class="login-panel">
     <div class="login-card">
@@ -30,8 +30,9 @@
           <input id="password" name="password" type="password" autocomplete="current-password" required></div>
         <button class="btn primary block" type="submit" style="margin-top:6px;padding:10px">Sign in</button>
       </form>
+      {% if show_demo_logins %}
       <div class="card demo-users">
-        <div class="card-head"><h3>Demo logins</h3><span class="faint">password: <span class="mono">Shaha@123</span></span></div>
+        <div class="card-head"><h3>Demo logins</h3><span class="faint">password: <span class="mono">{{ demo_password }}</span></span></div>
         <table>
           <tr><td>Head of Collections</td><td class="right"><button type="button" data-login="head">head</button></td></tr>
           <tr><td>Manager · Jogeshwari (Rekha Khan)</td><td class="right"><button type="button" data-login="manager1">manager1</button></td></tr>
@@ -39,6 +40,7 @@
           <tr><td>Customer Service · Dadar</td><td class="right"><button type="button" data-login="cs2">cs2</button></td></tr>
         </table>
       </div>
+      {% endif %}
     </div>
   </section>
 </div>
@@ -47,7 +49,7 @@
 <script>
 document.querySelectorAll('[data-login]').forEach(b => b.addEventListener('click', () => {
   document.getElementById('username').value = b.dataset.login;
-  const p = document.getElementById('password'); p.value = 'Shaha@123'; p.focus();
+  const p = document.getElementById('password'); p.value = {{ demo_password | tojson }}; p.focus();
 }));
 </script>
 {% endblock %}

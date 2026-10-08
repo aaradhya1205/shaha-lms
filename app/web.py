@@ -46,7 +46,8 @@ templates.env.filters.update(
     inr=inr, rupees_input=rupees_input, d=_fmt_date, dt=_fmt_dt, rel=_relative_day,
     num=_indian_number,
 )
-templates.env.globals.update(perm=permissions, today=config.today)
+templates.env.globals.update(perm=permissions, today=config.today, show_demo_logins=config.SHOW_DEMO_LOGINS,
+                             demo_password=config.DEMO_PASSWORD, current_year=lambda: config.today().year)
 
 
 def flash(request: Request, message: str, kind: str = "success") -> None:

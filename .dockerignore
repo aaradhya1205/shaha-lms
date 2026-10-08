@@ -1,0 +1,7 @@
+.venv
+.git
+__pycache__
+*.db
+*.db-*
+.pytest_cache
+data/accounts_100000.csv

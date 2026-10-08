@@ -1,10 +1,10 @@
-# Shaha Finlease — Loan Management System (Prototype)
+# Shaha Finlease — Loan Management System
 
 A working, demo-ready LMS for Shaha Finlease's **recovery** business: purchased NPA / written-off
 portfolios (personal loans and credit cards) are uploaded, allocated to callers across the
 **Jogeshwari, Dadar and Bangalore** offices, and worked through calls, promises to pay (PTP) and payments.
 
-> Dummy data only. Python 3.11+ · FastAPI · SQLAlchemy 2 · SQLite (PostgreSQL-ready) · server-rendered Jinja pages.
+> Ships with dummy seed data. Python 3.11+ · FastAPI · SQLAlchemy 2 · SQLite (PostgreSQL-ready) · server-rendered Jinja pages.
 
 ---
 
@@ -22,7 +22,7 @@ Other ways to run it:
 | `make reset` | same as `./run.sh --reset` |
 | `make seed` / `python -m app.seed` | reset the database only (about 5 s) |
 | `python -m app.seed --no-activity` | users + 10,000 **fresh, unallocated** accounts (clean slate) |
-| `make test` | run the 30 automated tests |
+| `make test` | run the 35 automated tests |
 | `make big-csv` | generate `data/accounts_100000.csv` for the 1,00,000-row upload test |
 | `PORT=8765 ./run.sh` | use another port if 8000 is busy |
 
@@ -99,7 +99,7 @@ Browser ──HTML forms──▶ FastAPI routers (app/routers/*)     thin: pars
                         SQLAlchemy models (app/models.py) ─▶ SQLite / PostgreSQL
 ```
 * **Server-rendered pages** (Jinja2) with a little vanilla JS for speed-ups such as keyboard shortcuts and
-  select-all. There is no build step and no CDN, so the demo works offline.
+  select-all. There is no build step. Typography is Inter + JetBrains Mono (Google Fonts, with system-font fallback).
 * **Role checks are on the server.** Every account read or write goes through
   `permissions.scope_accounts()` / `get_visible_account()`. An account you can't see returns **404**,
   so its existence is not revealed. Screens a role can't use return **403**.
@@ -178,7 +178,7 @@ the full error report is downloadable. Accepted variants: `₹`/commas in amount
 ## 6. Tests
 
 ```bash
-make test        # 30 tests, ~7 s, uses a throw-away SQLite DB
+make test        # 35 tests, ~7 s, uses a throw-away SQLite DB
 ```
 Covers all 9 features, including server-side access control by direct URL, the 1,00,000-row load,
 queue ordering, PTP Kept/Broken, and every payment status transition.
@@ -186,7 +186,29 @@ queue ordering, PTP Kept/Broken, and every payment status transition.
 Measured on a laptop (SQLite): 1,00,000-row upload ≈ 4 s; search across 1,10,000 accounts ≈ 0.2 s;
 other pages 10–60 ms.
 
-## 7. Project layout
+## 7. Production settings & deployment
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `APP_ENV` | `development` | `production` → secure cookies, HSTS, demo-login box hidden, `SECRET_KEY` required |
+| `SECRET_KEY` | — | signs the session cookie (required in production) |
+| `DATABASE_URL` | SQLite file | e.g. PostgreSQL in production |
+| `SHOW_DEMO_LOGINS` | `1` in dev, `0` in prod | show the demo-login helper on the sign-in page |
+| `ALLOWED_HOSTS` | — | extra domains allowed to submit forms (e.g. a proxy domain) |
+| `DEMO_PASSWORD` | `Shaha@123` | password given to seeded users |
+
+Built in: security headers (CSP, X-Frame-Options, nosniff, Referrer-Policy, HSTS), cross-site POST
+blocking (Origin check + SameSite cookies), login lock-out after 5 failures in 15 minutes, `no-store`
+on pages with customer data, `/healthz` for load balancers, a logged and branded 500 page, and a
+non-root Docker image.
+
+```bash
+docker build -t shaha-lms . && docker run -p 8000:8000 -e SECRET_KEY=$(openssl rand -hex 32) shaha-lms
+```
+`render.yaml` deploys the same image on Render in one click (Blueprint). The container seeds the demo
+data on first start (`python -m app.seed --if-empty`).
+
+## 8. Project layout
 ```
 app/
   main.py            app, middleware (session, daily PTP sweep), error pages
@@ -204,8 +226,8 @@ scripts/generate_accounts.py   dummy CSV generator (e.g. 1,00,000 rows)
 tests/               pytest suite
 ```
 
-## 8. What I'd do next for production
-CSRF tokens on forms (today: SameSite cookies), Alembic migrations, PostgreSQL with trigram indexes for
+## 9. What I'd do next
+Per-form CSRF tokens (today: Origin check + SameSite cookies), Alembic migrations, PostgreSQL with trigram indexes for
 name search, background job for very large uploads with progress, a scheduled nightly PTP sweep,
 audit log of logins, payment approval and reversal workflow, a settlement module, click-to-call
 dialer integration, SMS/WhatsApp payment links, and purchase-price tracking to report recovery against cost.

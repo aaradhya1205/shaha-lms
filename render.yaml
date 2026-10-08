@@ -1,0 +1,14 @@
+# One-click deploy on Render (Python-friendly host): Dashboard -> New -> Blueprint -> this repo.
+services:
+  - type: web
+    name: shaha-lms
+    runtime: docker
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SHOW_DEMO_LOGINS
+        value: "1"   # set to 0 once real users exist

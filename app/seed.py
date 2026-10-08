@@ -179,7 +179,15 @@ def main() -> None:
     parser.add_argument("--no-activity", action="store_true", help="only users + unallocated accounts")
     parser.add_argument("--accounts", default=str(ACCOUNTS_CSV), help="accounts CSV to load")
     parser.add_argument("--seed", type=int, default=42, help="random seed for simulated activity")
+    parser.add_argument("--if-empty", action="store_true", help="only seed when the database has no users")
     args = parser.parse_args()
+
+    if args.if_empty:
+        Base.metadata.create_all(engine)
+        with SessionLocal() as db:
+            if db.scalar(select(User.id).limit(1)) is not None:
+                print("Database already seeded - skipping.")
+                return
 
     started = clock.perf_counter()
     print(f"Resetting database: {engine.url.render_as_string(hide_password=True)}")

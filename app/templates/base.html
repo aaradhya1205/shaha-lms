@@ -4,7 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}LMS{% endblock %} · Shaha Finlease</title>
-  <link rel="stylesheet" href="/static/style.css">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/static/style.css?v=2">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b3d91'/><text x='16' y='22' font-size='16' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'>SF</text></svg>">
 </head>
 <body>
@@ -30,8 +34,8 @@
   {% for m in messages %}<div class="flash {{ m.kind }}" role="status">{{ m.message }}</div>{% endfor %}
   {% block content %}{% endblock %}
 </main>
-{% if user %}<div class="footer">Business date {{ today() | d }} · Dummy data only · Shaha Finlease LMS prototype</div>{% endif %}
-<script src="/static/app.js"></script>
+{% if user %}<footer class="footer">© {{ current_year() }} Shaha Finlease · Loan Management System · Business date {{ today() | d }}</footer>{% endif %}
+<script src="/static/app.js?v=2"></script>
 {% block scripts %}{% endblock %}
 </body>
 </html>
