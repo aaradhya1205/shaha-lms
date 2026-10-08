@@ -1,0 +1,20 @@
+{# Brand mark + lockup. One source for the logo used on every page. #}
+{% macro mark(size=36, tile="#ffffff", ink="#0b3d91", accent="#1d6fe8") -%}
+<svg class="brand-mark" width="{{ size }}" height="{{ size }}" viewBox="0 0 40 40" role="img" aria-label="Shaha Finlease logo" focusable="false">
+  <rect width="40" height="40" rx="10" fill="{{ tile }}"/>
+  <rect x="9"  y="22" width="5.5" height="9"  rx="1.6" fill="{{ ink }}" opacity=".55"/>
+  <rect x="17.25" y="17" width="5.5" height="14" rx="1.6" fill="{{ ink }}" opacity=".8"/>
+  <rect x="25.5" y="11" width="5.5" height="20" rx="1.6" fill="{{ accent }}"/>
+  <path d="M9.5 16.5 L17.5 11.5 L22 14 L30.5 8.5" fill="none" stroke="{{ ink }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+{%- endmacro %}
+
+{% macro lockup(tagline, size=36, href=None) -%}
+{% if href %}<a class="brand" href="{{ href }}">{% else %}<div class="brand">{% endif %}
+  {{ mark(size) }}
+  <span class="brand-text">
+    <span class="wordmark">Shaha <b>Finlease</b></span>
+    <span class="tagline">{{ tagline | safe }}</span>
+  </span>
+{% if href %}</a>{% else %}</div>{% endif %}
+{%- endmacro %}

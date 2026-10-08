@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% import "_brand.html" as brand %}
 {% block title %}Sign in{% endblock %}
 {% block main_class %}{% endblock %}
 {% block content %}
 <div class="login-wrap">
   <section class="login-hero">
-    <div class="brand"><span class="brand-mark">SF</span><span>Shaha Finlease<small>RBI-registered NBFC · Jogeshwari East, Mumbai</small></span></div>
+    {{ brand.lockup('RBI-registered NBFC<i class="sep"></i>Jogeshwari East, Mumbai', size=44) }}
     <div>
       <h1>Recovery operations, one account at a time.</h1>
       <p>Allocate purchased NPA portfolios, work the daily queue, capture promises and record every rupee recovered.</p>

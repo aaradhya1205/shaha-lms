@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b3d91'/><text x='16' y='22' font-size='16' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'>SF</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
   <style>
     :root { color-scheme: light; }
     * { box-sizing: border-box; }
@@ -19,9 +19,11 @@
       -webkit-font-smoothing: antialiased;
     }
     .box { max-width: 440px; text-align: center; }
-    .mark { width: 56px; height: 56px; border-radius: 14px; background: #fff; color: #0b3d91; display: grid; place-items: center;
-            font-weight: 800; font-size: 22px; margin: 0 auto 22px; }
-    h1 { font-size: 26px; letter-spacing: -.022em; margin: 0 0 6px; font-weight: 700; }
+    .mark { display: block; margin: 0 auto 22px; border-radius: 15px; box-shadow: 0 8px 24px rgba(0,0,0,.25), 0 0 0 1px rgba(255,255,255,.1); }
+    .tagline { font-size: 11.5px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; opacity: .72; margin-top: 8px; }
+    .tagline i { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: currentColor; margin: 0 8px; vertical-align: middle; }
+    h1 b { font-weight: 800; }
+    h1 { font-size: 28px; letter-spacing: -.025em; margin: 0 0 6px; font-weight: 600; }
     p { margin: 0; opacity: .82; }
     .status { margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; font-weight: 500; font-size: 14px;
               background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); padding: 10px 16px; border-radius: 999px; }
@@ -33,9 +35,16 @@
 </head>
 <body>
   <main class="box">
-    <div class="mark">SF</div>
-    <h1>Shaha Finlease</h1>
+    <svg class="mark" width="60" height="60" viewBox="0 0 40 40" role="img" aria-label="Shaha Finlease logo">
+      <rect width="40" height="40" rx="10" fill="#fff"/>
+      <rect x="9" y="22" width="5.5" height="9" rx="1.6" fill="#0b3d91" opacity=".55"/>
+      <rect x="17.25" y="17" width="5.5" height="14" rx="1.6" fill="#0b3d91" opacity=".8"/>
+      <rect x="25.5" y="11" width="5.5" height="20" rx="1.6" fill="#1d6fe8"/>
+      <path d="M9.5 16.5 L17.5 11.5 L22 14 L30.5 8.5" fill="none" stroke="#0b3d91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>Shaha <b>Finlease</b></h1>
     <p>Loan Management System</p>
+    <div class="tagline">RBI-registered NBFC<i></i>Jogeshwari East, Mumbai</div>
     <div class="status" role="status"><span class="spin"></span><span id="msg">Connecting to the server…</span></div>
     <small>© <span id="y"></span> Shaha Finlease · Authorised personnel only</small>
   </main>
