@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#33162b">
   <title>Shaha Finlease · Loan Management System</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,19 +16,19 @@
     body {
       margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
       font: 400 15px/1.55 "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #fff; background: radial-gradient(1200px 600px at -10% -10%, #1d63d8 0%, transparent 60%), linear-gradient(160deg, #0b3d91, #082a66);
+      color: #fff; background: radial-gradient(1100px 600px at -10% -10%, #5a2a4c 0%, transparent 60%), radial-gradient(700px 500px at 110% 110%, rgba(227,115,21,.22) 0%, transparent 60%), linear-gradient(160deg, #33162b, #200d1b);
       -webkit-font-smoothing: antialiased;
     }
     .box { max-width: 440px; text-align: center; }
-    .mark { display: block; margin: 0 auto 22px; border-radius: 15px; box-shadow: 0 8px 24px rgba(0,0,0,.25), 0 0 0 1px rgba(255,255,255,.1); }
+    .mark { display: block; margin: 0 auto 18px; height: 62px; width: auto; }
     .tagline { font-size: 11.5px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; opacity: .72; margin-top: 8px; }
     .tagline i { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: currentColor; margin: 0 8px; vertical-align: middle; }
-    h1 b { font-weight: 800; }
+    .product { font-size: 17px; font-weight: 600; letter-spacing: -.01em; opacity: .95; }
     h1 { font-size: 28px; letter-spacing: -.025em; margin: 0 0 6px; font-weight: 600; }
     p { margin: 0; opacity: .82; }
     .status { margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; font-weight: 500; font-size: 14px;
               background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); padding: 10px 16px; border-radius: 999px; }
-    .spin { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.35); border-top-color: #fff; border-radius: 50%; animation: s .8s linear infinite; }
+    .spin { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.35); border-top-color: #e37315; border-radius: 50%; animation: s .8s linear infinite; }
     @keyframes s { to { transform: rotate(360deg); } }
     a { color: #fff; font-weight: 600; }
     small { display: block; margin-top: 40px; opacity: .55; font-size: 12px; }
@@ -35,15 +36,8 @@
 </head>
 <body>
   <main class="box">
-    <svg class="mark" width="60" height="60" viewBox="0 0 40 40" role="img" aria-label="Shaha Finlease logo">
-      <rect width="40" height="40" rx="10" fill="#fff"/>
-      <rect x="9" y="22" width="5.5" height="9" rx="1.6" fill="#0b3d91" opacity=".55"/>
-      <rect x="17.25" y="17" width="5.5" height="14" rx="1.6" fill="#0b3d91" opacity=".8"/>
-      <rect x="25.5" y="11" width="5.5" height="20" rx="1.6" fill="#1d6fe8"/>
-      <path d="M9.5 16.5 L17.5 11.5 L22 14 L30.5 8.5" fill="none" stroke="#0b3d91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <h1>Shaha <b>Finlease</b></h1>
-    <p>Loan Management System</p>
+    <img class="mark" src="/shaha-logo.png" alt="Shaha Finlease" width="190" height="53">
+    <p class="product">Loan Management System</p>
     <div class="tagline">RBI-registered NBFC<i></i>Jogeshwari East, Mumbai</div>
     <div class="status" role="status"><span class="spin"></span><span id="msg">Connecting to the server…</span></div>
     <small>© <span id="y"></span> Shaha Finlease · Authorised personnel only</small>

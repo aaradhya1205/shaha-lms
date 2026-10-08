@@ -1,4 +1,4 @@
-/* Shaha Finlease LMS — single stylesheet, no external assets (works offline for demos). */
+/* Shaha Finlease LMS — single stylesheet. Colours follow shahafinlease.com: plum #33162B + orange #E37315. */
 :root {
   --bg: #f4f6fa;
   --surface: #ffffff;
@@ -8,9 +8,14 @@
   --text: #0f172a;
   --text-2: #475569;
   --text-3: #94a3b8;
-  --brand: #0b3d91;
-  --brand-2: #1456c7;
-  --brand-soft: #e8effb;
+  --brand: #33162b;        /* plum - header, hero */
+  --brand-2: #e37315;      /* orange - primary actions, focus, selection */
+  --brand-hover: #c9620f;
+  --brand-ink: #b5560a;    /* orange dark enough for text on white (WCAG AA) */
+  --brand-soft: #fdf0e5;
+  --brand-line: #f6d2b3;
+  --blue: #1456c7;         /* "Working" status keeps its own colour */
+  --blue-soft: #e8effb;
   --good: #047857;
   --good-soft: #e7f6ef;
   --warn: #b45309;
@@ -36,7 +41,7 @@ body {
   font-feature-settings: "cv11", "ss01", "ss03", "cv05";
 }
 button, input, select, textarea { font-family: inherit; font-feature-settings: inherit; }
-a { color: var(--brand-2); text-decoration: none; }
+a { color: var(--brand-ink); text-decoration: none; }
 a:hover { text-decoration: underline; }
 h1, h2, h3 { margin: 0; line-height: 1.25; }
 h1 { font-size: 24px; font-weight: 700; letter-spacing: -.022em; }
@@ -58,13 +63,12 @@ h3 { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spac
 .topbar-inner { max-width: 1440px; margin: 0 auto; padding: 0 20px; height: 56px; display: flex; align-items: center; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; color: #fff; white-space: nowrap; }
 .brand:hover { text-decoration: none; }
-.brand .brand-mark { flex: none; display: block; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, .18), 0 0 0 1px rgba(255, 255, 255, .08); }
-.brand-text { display: flex; flex-direction: column; gap: 3px; line-height: 1; }
-.wordmark { font-size: 16px; font-weight: 600; letter-spacing: -.022em; color: #fff; }
-.wordmark b { font-weight: 800; }
+.brand-logo { display: block; height: 34px; width: auto; }
+.login-hero .brand-logo { height: 52px; }
+.brand-divider { width: 1px; height: 26px; background: rgba(255, 255, 255, .22); }
+.brand-text { display: flex; flex-direction: column; gap: 3px; line-height: 1.2; }
 .tagline { display: inline-flex; align-items: center; font-size: 10.5px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: rgba(255, 255, 255, .72); }
 .tagline .sep { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: currentColor; margin: 0 8px; opacity: .8; }
-.login-hero .wordmark { font-size: 19px; }
 .login-hero .tagline { font-size: 11px; }
 .nav { display: flex; gap: 4px; flex: 1; }
 .nav a {
@@ -109,7 +113,7 @@ a.kpi:hover { text-decoration: none; border-color: var(--brand-2); transform: tr
 .kpi.accent-good .value { color: var(--good); }
 .kpi.accent-bad .value { color: var(--bad); }
 .kpi.accent-warn .value { color: var(--warn); }
-.kpi.accent-brand .value { color: var(--brand-2); }
+.kpi.accent-brand .value { color: var(--brand-ink); }
 .kpi.active { border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
 
 /* ---------- Badges ---------- */
@@ -120,7 +124,7 @@ a.kpi:hover { text-decoration: none; border-color: var(--brand-2); transform: tr
 .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .85; }
 .badge.plain::before { display: none; }
 .s-New { background: var(--info-soft); color: var(--info); }
-.s-Working { background: var(--brand-soft); color: var(--brand-2); }
+.s-Working { background: var(--blue-soft); color: var(--blue); }
 .s-PTP { background: var(--violet-soft); color: var(--violet); }
 .s-Part-paid { background: var(--warn-soft); color: var(--warn); }
 .s-Closed { background: var(--good-soft); color: var(--good); }
@@ -130,7 +134,7 @@ a.kpi:hover { text-decoration: none; border-color: var(--brand-2); transform: tr
 .p-Broken { background: var(--bad-soft); color: var(--bad); }
 .p-Cancelled { background: #f1f5f9; color: var(--text-2); }
 .b-0 { background: var(--violet-soft); color: var(--violet); }
-.b-1 { background: var(--brand-soft); color: var(--brand-2); }
+.b-1 { background: var(--blue-soft); color: var(--blue); }
 .b-2 { background: var(--bad-soft); color: var(--bad); }
 .b-3 { background: var(--info-soft); color: var(--info); }
 .b-4 { background: #f1f5f9; color: var(--text-2); }
@@ -158,7 +162,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--brand-2); box-sh
 }
 .btn:hover { background: var(--surface-2); text-decoration: none; }
 .btn.primary { background: var(--brand-2); border-color: var(--brand-2); color: #fff; }
-.btn.primary:hover { background: var(--brand); }
+.btn.primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
 .btn.good { background: var(--good); border-color: var(--good); color: #fff; }
 .btn.good:hover { filter: brightness(.95); }
 .btn.ghost { border-color: transparent; background: transparent; color: var(--text-2); }
@@ -203,24 +207,24 @@ tr.selected { background: var(--brand-soft) !important; }
 .flash { padding: 11px 14px; border-radius: 9px; margin-bottom: 14px; font-weight: 500; display: flex; gap: 10px; align-items: center; border: 1px solid; }
 .flash.success { background: var(--good-soft); color: #065f46; border-color: #bfe6d4; }
 .flash.error { background: var(--bad-soft); color: var(--bad); border-color: #f5c2c2; }
-.flash.info { background: var(--brand-soft); color: var(--brand); border-color: #c9d8f3; }
+.flash.info { background: var(--brand-soft); color: var(--brand); border-color: var(--brand-line); }
 
 /* ---------- Login ---------- */
 .login-wrap { min-height: 100vh; display: grid; grid-template-columns: 1.1fr 1fr; }
 .login-hero {
-  background: radial-gradient(1200px 600px at -10% -10%, #1d63d8 0%, transparent 60%), linear-gradient(160deg, #0b3d91, #082a66);
+  background: radial-gradient(1100px 600px at -10% -10%, #5a2a4c 0%, transparent 60%), radial-gradient(700px 500px at 110% 110%, rgba(227, 115, 21, .22) 0%, transparent 60%), linear-gradient(160deg, #33162b, #200d1b);
   color: #fff; padding: 56px; display: flex; flex-direction: column; justify-content: space-between;
 }
 .login-hero h1 { font-size: 38px; line-height: 1.12; max-width: 480px; margin-top: 40px; letter-spacing: -.03em; font-weight: 800; }
 .login-hero p { opacity: .82; max-width: 440px; font-size: 15px; }
 .login-hero ul { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 10px; opacity: .9; }
-.login-hero li::before { content: "✓"; display: inline-block; width: 22px; font-weight: 700; color: #8fb6ff; }
+.login-hero li::before { content: "✓"; display: inline-block; width: 22px; font-weight: 700; color: #f2a766; }
 .login-panel { display: grid; place-items: center; padding: 40px; }
 .login-card { width: 100%; max-width: 380px; }
 .login-card h2 { font-size: 24px; margin-bottom: 4px; letter-spacing: -.022em; font-weight: 700; }
 .demo-users { margin-top: 22px; font-size: 12.5px; }
 .demo-users table td { padding: 5px 8px; }
-.demo-users button { all: unset; cursor: pointer; color: var(--brand-2); font-family: var(--mono); font-size: 12px; }
+.demo-users button { all: unset; cursor: pointer; color: var(--brand-ink); font-family: var(--mono); font-size: 12px; }
 .demo-users button:hover { text-decoration: underline; }
 
 /* ---------- Account page ---------- */
@@ -251,7 +255,7 @@ dl.details dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
   flex: 1; background: none; border: none; padding: 12px; font: inherit; font-weight: 600; color: var(--text-2); cursor: pointer;
   border-bottom: 2px solid transparent; margin-bottom: -1px;
 }
-.tabs button.active { color: var(--brand-2); border-bottom-color: var(--brand-2); }
+.tabs button.active { color: var(--brand-ink); border-bottom-color: var(--brand-2); }
 .tab-pane { display: none; padding: 16px; }
 .tab-pane.active { display: block; }
 .dispo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-bottom: 14px; }
@@ -305,7 +309,7 @@ dl.details dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
 .dropzone:hover, .dropzone.drag { border-color: var(--brand-2); background: var(--brand-soft); }
 .dropzone input { display: none; }
 .dropzone .big { font-size: 15px; font-weight: 600; color: var(--text); }
-.dropzone .file { margin-top: 8px; font-family: var(--mono); color: var(--brand-2); font-size: 13px; }
+.dropzone .file { margin-top: 8px; font-family: var(--mono); color: var(--brand-ink); font-size: 13px; }
 .result-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .result-grid > div { background: var(--surface-2); border: 1px solid var(--border); border-radius: 9px; padding: 12px; }
 .result-grid .value { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
@@ -321,7 +325,7 @@ dl.details dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
 .status-bar span { display: block; height: 100%; }
 .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; font-size: 12.5px; color: var(--text-2); }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
-.c-New { background: #0e7490; } .c-Working { background: #1456c7; } .c-PTP { background: #6d28d9; }
+.c-New { background: #0e7490; } .c-Working { background: var(--blue); } .c-PTP { background: #6d28d9; }
 .c-Part-paid { background: #d97706; } .c-Closed { background: #047857; } .c-Settled { background: #34d399; }
 
 .footer { text-align: center; color: var(--text-3); font-size: 12px; padding: 18px; }
@@ -338,7 +342,7 @@ dl.details dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
   .login-wrap { grid-template-columns: 1fr; }
   .login-hero { display: none; }
   .topbar-inner { gap: 12px; padding: 0 16px; }
-  .topbar .brand-text, .userbox .who { display: none; }
+  .topbar .brand-text, .topbar .brand-divider, .userbox .who { display: none; }
   .nav { overflow-x: auto; }
   .grid-2, .grid-3 { grid-template-columns: minmax(0, 1fr); }
   .money-strip, .result-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}LMS{% endblock %} · Shaha Finlease</title>
   <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#33162b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/static/style.css?v=3">
+  <link rel="stylesheet" href="/static/style.css?v=4">
   <link rel="icon" type="image/svg+xml" href="/static/logo.svg">
 </head>
 <body>
@@ -17,7 +18,7 @@
 {% set path = request.url.path %}
 <header class="topbar">
   <div class="topbar-inner">
-    {{ brand.lockup("Loan Management System", size=34, href="/home") }}
+    {{ brand.lockup("Loan Management<br>System", href="/home", divider=True) }}
     <nav class="nav">
       {% if perm.can_allocate(user) %}<a href="/dashboard" class="{{ 'active' if path == '/dashboard' }}">Dashboard</a>{% endif %}
       <a href="/accounts" class="{{ 'active' if path.startswith('/accounts') }}">{{ 'My Queue' if user.role == 'caller' else 'Accounts' }}</a>
