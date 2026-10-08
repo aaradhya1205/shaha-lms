@@ -46,11 +46,11 @@
     async function poll() {
       try {
         const r = await fetch('/healthz', { cache: 'no-store' });
-        if (r.ok) { location.replace('/login'); return; }
+        if (r.ok) { location.replace('/home'); return; }
       } catch (e) { /* server still waking */ }
       const s = Math.round((Date.now() - started) / 1000);
       if (s > 4) msg.textContent = `Starting the server… (${s}s — usually under a minute)`;
-      if (s > 120) { msg.innerHTML = 'Still starting. <a href="/login">Try opening the app</a>'; return; }
+      if (s > 120) { msg.innerHTML = 'Still starting. <a href="/home">Try opening the app</a>'; return; }
       setTimeout(poll, 2500);
     }
     poll();

@@ -24,7 +24,7 @@ def test_pages_require_login(client, db):
 def test_login_redirect_is_not_an_open_redirect(client, db):
     r = client.post("/login", data={"username": "head", "password": "Shaha@123", "next": "//evil.example"},
                     follow_redirects=False)
-    assert r.headers["location"] == "/"
+    assert r.headers["location"] == "/home"
 
 
 def test_caller_sees_only_own_accounts(client, db, users):
@@ -80,3 +80,12 @@ def test_head_sees_everything(client, db):
 def test_upload_is_head_only(client, db):
     login(client, "manager1")
     assert client.get("/upload").status_code == 403
+
+
+def test_signed_in_user_never_bounces_to_root(client, db):
+    """On Netlify "/" is a static page, so the app must land users on /home, not "/"."""
+    login(client, "caller1")
+    assert client.get("/login", follow_redirects=False).headers["location"] == "/home"
+    assert client.get("/home", follow_redirects=False).headers["location"] == "/accounts"
+    r = client.post("/login", data={"username": "caller1", "password": "Shaha@123"}, follow_redirects=False)
+    assert r.headers["location"] == "/home"

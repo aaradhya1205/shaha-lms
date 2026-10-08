@@ -18,6 +18,7 @@ supervisor = require_roles(Role.HEAD, Role.COO, Role.MANAGER)
 
 
 @router.get("/")
+@router.get("/home")  # stable landing URL (on Netlify, "/" is the static start-up page)
 def home(user: User = Depends(current_user)):
     if user.role in (Role.CALLER, Role.CUSTOMER_SERVICE):
         return RedirectResponse("/accounts", status_code=303)

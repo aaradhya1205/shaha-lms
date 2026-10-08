@@ -28,15 +28,15 @@ def _locked(key: str) -> bool:
 
 def _safe_next(target: str | None) -> str:
     # Only allow same-site relative paths (blocks open redirects like //evil.com).
-    if target and target.startswith("/") and not target.startswith("//") and target != "/login":
+    if target and target.startswith("/") and not target.startswith("//") and not target.startswith("/login"):
         return target
-    return "/"
+    return "/home"
 
 
 @router.get("/login")
 def login_page(request: Request, next: str | None = None):
     if request.session.get("user_id"):
-        return RedirectResponse("/", status_code=303)
+        return RedirectResponse("/home", status_code=303)
     return render(request, "login.html", next=next or "")
 
 

@@ -16,7 +16,7 @@
 {% set path = request.url.path %}
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="/"><span class="brand-mark">SF</span><span>Shaha Finlease<small>Loan Management System</small></span></a>
+    <a class="brand" href="/home"><span class="brand-mark">SF</span><span>Shaha Finlease<small>Loan Management System</small></span></a>
     <nav class="nav">
       {% if perm.can_allocate(user) %}<a href="/dashboard" class="{{ 'active' if path == '/dashboard' }}">Dashboard</a>{% endif %}
       <a href="/accounts" class="{{ 'active' if path.startswith('/accounts') }}">{{ 'My Queue' if user.role == 'caller' else 'Accounts' }}</a>
