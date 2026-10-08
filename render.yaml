@@ -1,7 +1,7 @@
 # One-click deploy on Render (Python-friendly host): Dashboard -> New -> Blueprint -> this repo.
 services:
   - type: web
-    name: shaha-lms
+    name: shaha-finlease-lms
     runtime: docker
     plan: free
     healthCheckPath: /healthz
@@ -10,5 +10,7 @@ services:
         value: production
       - key: SECRET_KEY
         generateValue: true
+      - key: ALLOWED_HOSTS
+        value: shaha-finlease-lms.netlify.app   # the Netlify front door that proxies here
       - key: SHOW_DEMO_LOGINS
         value: "1"   # set to 0 once real users exist

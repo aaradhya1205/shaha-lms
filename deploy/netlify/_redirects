@@ -1,0 +1,2 @@
+# Everything except this folder's static files is proxied to the FastAPI app on Render.
+/*  https://shaha-finlease-lms.onrender.com/:splat  200

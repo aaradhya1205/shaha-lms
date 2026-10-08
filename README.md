@@ -208,6 +208,12 @@ docker build -t shaha-lms . && docker run -p 8000:8000 -e SECRET_KEY=$(openssl r
 `render.yaml` deploys the same image on Render in one click (Blueprint). The container seeds the demo
 data on first start (`python -m app.seed --if-empty`).
 
+**Live hosting.** Netlify serves static files and JS/Go functions only, so the Python app runs on Render and
+`deploy/netlify/` is a tiny Netlify site in front of it: `_redirects` proxies every path to Render, and
+`index.html` is a branded start-up screen that waits for the free-tier Render instance to wake (~1 min
+after idle) before opening the login page. On the free tier the disk is ephemeral, so the demo data
+re-seeds whenever the instance restarts.
+
 ## 8. Project layout
 ```
 app/
